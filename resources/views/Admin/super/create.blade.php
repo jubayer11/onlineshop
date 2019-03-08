@@ -8,6 +8,7 @@
 
     <div class="container">
 
+     <h3>creating Admin</h3>
 
 
 
@@ -31,7 +32,7 @@
                             <div id="div_id_password1" class="form-group required">
                                 <label for="id_password1" class="control-label col-md-4  requiredField">Password<span class="asteriskField">*</span> </label>
                                 <div class="controls col-md-8 ">
-                                    <input class="input-md textinput textInput form-control" id="id_password1" name="password1" placeholder="Create a password" style="margin-bottom: 10px" type="password" />
+                                    <input class="input-md textinput textInput form-control" id="id_password1" name="password" placeholder="Create a password" style="margin-bottom: 10px" type="password" />
                                 </div>
                             </div>
                             <div id="div_id_password2" class="form-group required">

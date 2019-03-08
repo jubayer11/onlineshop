@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Admin;
 use App\Role;
 use Illuminate\Http\Request;
+use Session;
 
 class SuperAdminAdminController extends Controller
 {
@@ -15,7 +16,8 @@ class SuperAdminAdminController extends Controller
      */
     public function index()
     {
-        //
+        $admins=Admin::all();
+        return view('admin.super.index',compact('admins'));
     }
 
     /**
@@ -50,6 +52,10 @@ class SuperAdminAdminController extends Controller
         $admin->user_name=$request->username;
         $admin->save();
 
+        Session::flash('success','Admin created');
+        return redirect()->route('super.admin.index');
+
+
     }
 
     /**
@@ -71,7 +77,10 @@ class SuperAdminAdminController extends Controller
      */
     public function edit($id)
     {
-        //
+        $admin=Admin::findOrFail($id);
+        $roles=Role::all();
+        return view('admin.super.edit',compact('admin','roles'));
+
     }
 
     /**
@@ -83,7 +92,32 @@ class SuperAdminAdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $admin=Admin::find($id);
+
+        if($request->hasFile('image'))
+        {
+            $admin_image=$request->image;
+            $admin_image_new_name=time().$admin_image->getClientOriginalName();
+            $admin_image->move('uploads/profile',$admin_image_new_name);
+            $admin->image=$admin_image_new_name;
+            $admin->save();
+
+        }
+        $admin->name=$request->name;
+        $admin->email=$request->email;
+        $admin->password=bcrypt($request->password);
+        $admin->status=$request->status;
+        $admin->role_id=$request->role;
+        $admin->user_name=$request->username;
+        $admin->save();
+
+        Session::flash('success','Admin Edited');
+        return redirect()->route('super.admin.index');
+
+
+
+
     }
 
     /**
@@ -94,6 +128,13 @@ class SuperAdminAdminController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $admin=Admin::find($id);
+        if(file_exists($admin->image))
+        {
+            unlink($admin->image);
+        }
+        $admin->delete();
+        Session::flash('success','admin deleted');
+        return redirect()->back();
     }
 }

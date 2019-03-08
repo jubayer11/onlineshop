@@ -19,6 +19,7 @@ class AdminSeeder extends Seeder
             'user_name'=>'jubayer',
             'email'=>'ahmedjubayer54@gmail.com',
             'role_id'=>1,
+            'status'=>1,
             'password'=>bcrypt(115487)
 
         ]);
