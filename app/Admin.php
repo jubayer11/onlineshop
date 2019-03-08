@@ -33,4 +33,15 @@ class Admin extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+
+
+    //relationship role table
+    public function role()
+    {
+        return $this->belongsTo('App\Role');
+    }
+
+
+
 }
