@@ -9,6 +9,15 @@
     <div class="container">
 
      <h3>creating Admin</h3>
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
 
 
 
@@ -38,7 +47,7 @@
                             <div id="div_id_password2" class="form-group required">
                                 <label for="id_password2" class="control-label col-md-4  requiredField"> Re:password<span class="asteriskField">*</span> </label>
                                 <div class="controls col-md-8 ">
-                                    <input class="input-md textinput textInput form-control" id="id_password2" name="password2" placeholder="Confirm your password" style="margin-bottom: 10px" type="password" />
+                                    <input class="input-md textinput textInput form-control" id="id_password2" name="password_confirmation" placeholder="Confirm your password" style="margin-bottom: 10px" type="password" />
                                 </div>
                             </div>
                             <div id="div_id_name" class="form-group required">

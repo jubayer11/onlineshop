@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Admin;
+use App\Http\Requests\AdminRequest;
 use App\Role;
 use Illuminate\Http\Request;
 use Session;
@@ -41,7 +42,7 @@ class SuperAdminAdminController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AdminRequest $request)
     {
         $admin=new Admin;
         $admin->name=$request->name;
