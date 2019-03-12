@@ -43,5 +43,20 @@ class Admin extends Authenticatable
     }
 
 
+    public function isAdmin()
+    {
+        if($this->role['name'] == "SuperAdmin" && $this->is_active ==1)
+        {
+            return true;
+        }
+        return false;
+    }
+    public function getGravatarAttribute()
+    {
+        $hash=md5(strtolower(trim($this->attributes['email']))) . "?d=mm";
+        return "http://www.gravatar.com/avatar/$hash";
+    }
+
+
 
 }

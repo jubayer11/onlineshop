@@ -1,14 +1,15 @@
-@extends('layouts.app')
+@extends('layouts.dashboard')
 
 @section('content')
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" href="{{asset('app/css/buttons.css')}}" type="text/css" media="screen">
     <!------ Include the above in your HEAD tag ---------->
 
     <div class="container">
 
-     <h3>creating Admin</h3>
+     <h3>Create Admin</h3>
         @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
@@ -80,7 +81,7 @@
 
                                 <div class="aab controls col-md-4 "></div>
                                 <div class="controls col-md-8 ">
-                                    <input type="submit" name="Submit" value="Submit" class="btn btn-primary btn btn-info" id="submit-id-signup" />
+                                    <button class="punch">Create Admin</button>
                                 </div>
 
 

@@ -11,16 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 Auth::routes(['verify' => true]);
 
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
 
-
+Route::get('/', 'AdminHomeController@index');
 //routes for admin
 
 
@@ -32,12 +30,28 @@ Route::get('/admin/password/reset','Admin\ForgotPasswordController@showLinkReque
 Route::post('/admin/password/reset','Admin\ResetPasswordController@reset')->name('admin.password.update');
 Route::get('/admin/password/reset/{token}','Admin\ResetPasswordController@showResetForm')->name('admin.password.reset');
 
-//for different admin
-Route::resource('super/admin','SuperAdminAdminController',['names'=>
-[
-       'index'=>'super.admin.index',
-       'create'=>'super.admin.create',
-       'store'=>'super.admin.store',
-       'edit'=>'super.admin.edit'
 
-]]);
+Route::resource('super/admin','SuperAdminAdminController',['names'=>
+    [
+        'index'=>'super.admin.index',
+        'create'=>'super.admin.create',
+        'store'=>'super.admin.store',
+        'edit'=>'super.admin.edit'
+
+    ]]);
+
+//route for dashboard
+Route::get('super/dashboard','DashboardController@dashboard')->name('super.dashboard');
+Route::get('super/icons','DashboardController@icons')->name('super.icons');
+Route::get('super/maps','DashboardController@maps')->name('super.maps');
+Route::get('super/notifications','DashboardController@notifications')->name('super.notifications');
+Route::get('super/table','DashboardController@table')->name('super.table');
+Route::get('super/template','DashboardController@template')->name('super.template');
+Route::get('super/typography','DashboardController@typography')->name('super.typography');
+Route::get('super/upgrade','DashboardController@upgrade')->name('super.upgrade');
+Route::get('super/user','DashboardController@user')->name('super.user');
+Route::get('admin/profile/update/{id}','DashboardController@profile')->name('admin.profile.update');
+
+Route::put('admin/profile/edit/{id}','DashboardController@profileEdit')->name('admin.profile.edit');
+
+

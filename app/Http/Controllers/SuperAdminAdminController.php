@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Admin;
 use App\Http\Requests\AdminRequest;
+use App\Http\Requests\AdminUpdateRequest;
 use App\Role;
 use Illuminate\Http\Request;
 use Session;
@@ -15,6 +16,12 @@ class SuperAdminAdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+        $this->middleware('SuperAdmin');
+    }
     public function index()
     {
         $admins=Admin::all();
@@ -91,8 +98,10 @@ class SuperAdminAdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(AdminUpdateRequest $request, $id)
     {
+
+
 
         $admin=Admin::find($id);
 
@@ -138,4 +147,6 @@ class SuperAdminAdminController extends Controller
         Session::flash('success','admin deleted');
         return redirect()->back();
     }
+
+
 }

@@ -1,12 +1,15 @@
-@extends('layouts.app')
+@extends('layouts.dashboard')
 @section('content')
 
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="{{asset('app/css/buttons.css')}}" type="text/css" media="screen">
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <!------ Include the above in your HEAD tag ---------->
 
     <div class="container">
+
+        <a href="{{route('super.admin.create')}}">  <button class="punch">Create Admin</button></a>
         <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-primary">
@@ -61,10 +64,13 @@
 
                         </tbody>
                     </table>
+
+
                 </div>
             </div>
 
         </div>
+
     </div>
 
     @endsection

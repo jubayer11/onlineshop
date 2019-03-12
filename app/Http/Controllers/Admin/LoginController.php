@@ -37,9 +37,33 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest:admin')->except('logout');
+
+
     }
 
-    public function showLoginForm()
+
+    protected function sendLoginResponse(Request $request)
+    {
+        $request->session()->regenerate();
+
+        $this->clearLoginAttempts($request);
+
+        $role = $this->guard()->user()->role;
+        if (is_null($role)) {
+            return redirect('/');
+        }
+
+        if ($role->name == 'SuperAdmin') {
+            return redirect(route('super.admin.create'));
+        } elseif ($role->name == 'Admin') {
+            return redirect('/');
+        }
+    }
+
+
+
+
+        public function showLoginForm()
     {
         return view('admin.login');
 
@@ -52,6 +76,9 @@ class LoginController extends Controller
     {
         return 'user_name';
     }
+
+
+
 
 
 

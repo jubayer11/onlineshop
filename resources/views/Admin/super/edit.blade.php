@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.dashboard')
 
 @section('content')
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -10,7 +10,15 @@
 
 
 <h3>Editing Admin</h3>
-
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
 
         <div class="col-sm-3">
             <img src=" {{ URL::to('/') }}/uploads/profile/{{$admin->image ? $admin->image: 'http://placehold.it/400*400'}}" alt="no photo" class="img-responsive img-rounded">
@@ -38,7 +46,7 @@
                     <div id="div_id_password1" class="form-group required">
                         <label for="id_password1" class="control-label col-md-4  requiredField">Password<span class="asteriskField">*</span> </label>
                         <div class="controls col-md-8 ">
-                            <input class="input-md textinput textInput form-control" id="id_password1" name="password1" value="{{$admin->password}}" placeholder="Create a password" style="margin-bottom: 10px" type="password" />
+                            <input class="input-md textinput textInput form-control" id="id_password1" name="password" value="{{$admin->password}}" placeholder="Create a password" style="margin-bottom: 10px" type="password" />
                         </div>
                     </div>
 
@@ -54,7 +62,7 @@
                         <div class="controls col-md-8 ">
                             <select class="input-md textinput textInput form-control" id="id_name"  name="role"   style="margin-bottom: 10px" >
                                 @foreach($roles as $role)
-                                    <option value="{{$admin->role->id}}">{{$role->name}}</option>
+                                    <option value="{{$role->id}}">{{$role->name}}</option>
                                 @endforeach
                             </select>
 
