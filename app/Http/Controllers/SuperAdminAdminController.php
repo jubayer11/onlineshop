@@ -7,6 +7,7 @@ use App\Http\Requests\AdminRequest;
 use App\Http\Requests\AdminUpdateRequest;
 use App\Role;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Session;
 
 class SuperAdminAdminController extends Controller
@@ -24,8 +25,10 @@ class SuperAdminAdminController extends Controller
     }
     public function index()
     {
+        $admin=Auth::user();
+        $role=$admin->role->name;
         $admins=Admin::all();
-        return view('admin.super.index',compact('admins'));
+        return view('admin.super.index',compact('admins','role'));
     }
 
     /**
@@ -36,11 +39,13 @@ class SuperAdminAdminController extends Controller
     public function create()
 
     {
+        $admin=Auth::user();
+        $r=$admin->role->name;
         $admins=Admin::all();
         $roles=Role::all();
 
 
-        return view('admin.super.create',compact('roles','admins'));
+        return view('admin.super.create',compact('roles','admins','r'));
     }
 
     /**
@@ -87,7 +92,9 @@ class SuperAdminAdminController extends Controller
     {
         $admin=Admin::findOrFail($id);
         $roles=Role::all();
-        return view('admin.super.edit',compact('admin','roles'));
+        $admin=Auth::user();
+        $r=$admin->role->name;
+        return view('admin.super.edit',compact('admin','roles','r'));
 
     }
 

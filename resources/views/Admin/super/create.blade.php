@@ -81,7 +81,7 @@
 
                                 <div class="aab controls col-md-4 "></div>
                                 <div class="controls col-md-8 ">
-                                    <button class="punch">Create Admin</button>
+                                    <input   type="submit" value="Create Admin" name="submit">
                                 </div>
 
 
@@ -91,4 +91,15 @@
                 </div>
 
 
+@endsection
+@section('SuperAdmin')
+    @if($r=='SuperAdmin')
+
+        <li>
+            <a href="{{route('super.admin.index')}}">
+                <i class="pe-7s-users"></i>
+                <p>ALL ADMIN</p>
+            </a>
+        </li>
+    @endif
 @endsection

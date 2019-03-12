@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/png" href="{{asset('app/img/favicon.ico')}}">
@@ -63,12 +63,8 @@
                         <p>User Profile</p>
                     </a>
                 </li>
-                <li>
-                    <a href="{{route('super.admin.index')}}">
-                        <i class="pe-7s-users"></i>
-                        <p>ALL ADMIN</p>
-                    </a>
-                </li>
+                @yield('SuperAdmin')
+
                 <li>
                     <a href="{{route('super.table')}}">
                         <i class="pe-7s-note2"></i>
@@ -179,9 +175,11 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="#">
-                                <p>Log out</p>
-                            </a>
+                            <form action="{{route('logout')}}" method="post">
+                                {{csrf_field()}}
+
+                                <input type="submit" value="Log Out">
+                            </form>
                         </li>
                         <li class="separator hidden-lg"></li>
                     </ul>

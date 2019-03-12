@@ -112,3 +112,14 @@
         </div>
     </div>
 @endsection
+@section('SuperAdmin')
+    @if($role=='SuperAdmin')
+
+        <li>
+            <a href="{{route('super.admin.index')}}">
+                <i class="pe-7s-users"></i>
+                <p>ALL ADMIN</p>
+            </a>
+        </li>
+    @endif
+@endsection

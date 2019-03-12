@@ -20,7 +20,11 @@ class DashboardController extends Controller
     public function dashboard()
 
   {
-    return view('admin.super.dashboard.dashboard');
+      $admin=Auth::user();
+      $role=$admin->role->name;
+
+
+    return view('admin.super.dashboard.dashboard',compact('role'));
    }
 
 
@@ -72,14 +76,18 @@ class DashboardController extends Controller
             $status='not Active';
         }
 
+        $role=$admin->role->name;
 
 
-        return view('admin.super.dashboard.user',compact('admin','status'));
+
+        return view('admin.super.dashboard.user',compact('admin','status','role'));
     }
 
 
     public function profile($id)
     {
+        $admins=Auth::user();
+        $role=$admins->role->name;
         $admin=Admin::find($id);
         $roles=Role::all();
 
@@ -91,7 +99,7 @@ class DashboardController extends Controller
         {
             $status='not Active';
         }
-        return view('Admin.super.dashboard.editProfile',compact('admin','status','roles'));
+        return view('Admin.super.dashboard.editProfile',compact('admin','status','roles','admins','role'));
 
 
     }
@@ -129,6 +137,7 @@ class DashboardController extends Controller
 
 
     }
+
 
 
 }

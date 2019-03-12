@@ -54,7 +54,7 @@ class LoginController extends Controller
         }
 
         if ($role->name == 'SuperAdmin') {
-            return redirect(route('super.admin.create'));
+            return redirect(route('super.dashboard'));
         } elseif ($role->name == 'Admin') {
             return redirect('/');
         }
