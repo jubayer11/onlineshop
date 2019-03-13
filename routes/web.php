@@ -54,4 +54,16 @@ Route::get('admin/profile/update/{id}','DashboardController@profile')->name('adm
 
 Route::put('admin/profile/edit/{id}','DashboardController@profileEdit')->name('admin.profile.edit');
 
+//front end dailyshop
+Route::get('dailyshop/index','VisitOnlineshopController@index')->name('dailyshop.index');
+Route::get('dailyshop/nopage','VisitOnlineshopController@nopage')->name('dailyshop.nopage');
+Route::get('dailyshop/account','VisitOnlineshopController@account')->name('dailyshop.account');
+Route::get('dailyshop/blog-archive-2','VisitOnlineshopController@blogArchive')->name('dailyshop.blogArchive');
+Route::get('dailyshop/blog-single','VisitOnlineshopController@blogSingle')->name('dailyshop.blogSingle');
+Route::get('dailyshop/cart','VisitOnlineshopController@cart')->name('dailyshop.cart');
+Route::get('dailyshop/checkout','VisitOnlineshopController@checkout')->name('dailyshop.checkout');
+Route::get('dailyshop/contact','VisitOnlineshopController@contact')->name('dailyshop.contact');
+Route::get('dailyshop/product','VisitOnlineshopController@product')->name('dailyshop.product');
+Route::get('dailyshop/product-detail','VisitOnlineshopController@productDetail')->name('dailyshop.productDetail');
+Route::get('dailyshop/wishlist','VisitOnlineshopController@wishlist')->name('dailyshop.wishlist');
 
