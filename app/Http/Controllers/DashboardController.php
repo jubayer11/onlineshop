@@ -22,10 +22,12 @@ class DashboardController extends Controller
   {
       $admin=Auth::user();
       $role=$admin->role->name;
+      $status=$admin->status;
 
 
-    return view('admin.super.dashboard.dashboard',compact('role'));
+    return view('admin.super.dashboard.dashboard',compact('role','status'));
    }
+
 
 
     public function icons()

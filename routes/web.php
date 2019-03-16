@@ -41,6 +41,7 @@ Route::resource('super/admin','SuperAdminAdminController',['names'=>
     ]]);
 
 //route for dashboard
+
 Route::get('super/dashboard','DashboardController@dashboard')->name('super.dashboard');
 Route::get('super/icons','DashboardController@icons')->name('super.icons');
 Route::get('super/maps','DashboardController@maps')->name('super.maps');
@@ -49,10 +50,32 @@ Route::get('super/table','DashboardController@table')->name('super.table');
 Route::get('super/template','DashboardController@template')->name('super.template');
 Route::get('super/typography','DashboardController@typography')->name('super.typography');
 Route::get('super/upgrade','DashboardController@upgrade')->name('super.upgrade');
+
+//for Admin
 Route::get('super/user','DashboardController@user')->name('super.user');
 Route::get('admin/profile/update/{id}','DashboardController@profile')->name('admin.profile.update');
-
 Route::put('admin/profile/edit/{id}','DashboardController@profileEdit')->name('admin.profile.edit');
+//for Product
+
+Route::resource('product','ProductsController',['names'=>
+    [
+        'index'=>'product.index',
+        'create'=>'product.create',
+        'store'=>'product.store',
+        'edit'=>'product.edit'
+
+    ]]);
+//for category
+Route::get('category/index','ProductCategoryController@index')->name('category.index');
+Route::post('category/store','ProductCategoryController@store')->name('category.store');
+Route::get('category/create','ProductCategoryController@create')->name('category.create');
+Route::get('category/edit/{id}','ProductCategoryController@edit')->name('category.edit');
+Route::delete('category/destroy/{id}','ProductCategoryController@destroy')->name('category.destroy');
+Route::put('category/update/{id}','ProductCategoryController@update')->name('category.update');
+
+
+
+
 
 //front end dailyshop
 Route::get('dailyshop/index','VisitOnlineshopController@index')->name('dailyshop.index');
@@ -66,4 +89,5 @@ Route::get('dailyshop/contact','VisitOnlineshopController@contact')->name('daily
 Route::get('dailyshop/product','VisitOnlineshopController@product')->name('dailyshop.product');
 Route::get('dailyshop/product-detail','VisitOnlineshopController@productDetail')->name('dailyshop.productDetail');
 Route::get('dailyshop/wishlist','VisitOnlineshopController@wishlist')->name('dailyshop.wishlist');
+
 

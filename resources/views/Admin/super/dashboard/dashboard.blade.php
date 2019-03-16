@@ -220,6 +220,17 @@
         </li>
     @endif
     @endsection
+@section('Admin')
+    @if(($role=='SuperAdmin' || $role=='Admin') && $status==1 )
+
+        <li>
+            <a href="{{route('super.admin.index')}}">
+                <i class="pe-7s-display2"></i>
+                <p>ALL Product</p>
+            </a>
+        </li>
+    @endif
+@endsection
 @section('notification')
     <script type="text/javascript">
         $(document).ready(function(){

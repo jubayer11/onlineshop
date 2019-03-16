@@ -64,6 +64,8 @@
                     </a>
                 </li>
                 @yield('SuperAdmin')
+                @yield('Admin')
+
 
                 <li>
                     <a href="{{route('super.table')}}">
