@@ -22,7 +22,7 @@
             @endif
             <div class="col-sm-6">
 
-            <h3>Create Admin</h3>
+            <h3>Create Category</h3>
 
 
 
@@ -53,7 +53,7 @@
 
          <div class="panel panel-primary">
              <div class="panel-heading">
-                 <h3 class="panel-title">All the Admin</h3>
+                 <h3 class="panel-title">All the Category</h3>
 
              </div>
 

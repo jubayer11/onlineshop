@@ -13,23 +13,23 @@
         <div class="row">
             <div class="col-sm-6">
 
-                <h3>Create Category for this Product</h3>
+                <h3>Create Tag for this Product</h3>
 
 
 
 
                 <div class="panel-body" >
 
-                    <form  class="form-horizontal" action="{{route('product.category.update',['id'=>$product->id])}}" method="post" >
+                    <form  class="form-horizontal" action="{{route('product.tag.update',['id'=>$product->id])}}" method="post" >
                         {{csrf_field()}}
                         {{method_field('PUT')}}
 
                         <div id="div_id_password2" class="form-group required">
-                            <label for="id_password2" class="control-label col-md-4  requiredField"> Category:<span class="asteriskField">*</span> </label>
+                            <label for="id_password2" class="control-label col-md-4  requiredField"> Tag:<span class="asteriskField">*</span> </label>
                             <div class="controls col-md-8 ">
-                                <select class="input-md textinput textInput form-control" id="id_name"  name="category"   style="margin-bottom: 10px" >
-                                    @foreach($categories as $category)
-                                        <option value="{{$category->id}}">{{$category->name}}</option>
+                                <select class="input-md textinput textInput form-control" id="id_name"  name="tag"   style="margin-bottom: 10px" >
+                                    @foreach($tags as $tag)
+                                        <option value="{{$tag->id}}">{{$tag->name}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -37,7 +37,7 @@
 
                         <div class="aab controls col-md-4 "></div>
                         <div class="controls col-md-8 ">
-                            <input   type="submit" value="Create category" name="submit">
+                            <input   type="submit" value="Create tag" name="submit">
                         </div>
 
 
@@ -48,7 +48,7 @@
             <div class="col-sm-4">
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Product Category</h3>
+                        <h3 class="panel-title">Product Tag</h3>
 
                     </div>
 
@@ -66,23 +66,24 @@
                         </thead>
                         <tbody>
 
-                            @foreach($product->categories as $category)
-                                <tr>
-                                    <td>{{$category->name}}</td>
-                                    <td>{{$category->created_at->diffForHumans()}}</td>
-                                    <td>{{$category->updated_at->diffForHumans()}}</td>
-                                    <td>
-                                        <form action="{{route('product.category.delete',['category_id'=>$category->id,'product_id'=>$product->id])}}" method="post" enctype="multipart/form-data" >
 
-                                            {{csrf_field()}}
+                        @foreach($product->tags as $tag)
+                            <tr>
+                                <td>{{$tag->name}}</td>
+                                <td>{{$tag->created_at->diffForHumans()}}</td>
+                                <td>{{$tag->updated_at->diffForHumans()}}</td>
+                                <td>
+                                    <form action="{{route('product.tag.delete',['tag_id'=>$tag->id,'product_id'=>$product->id])}}" method="post" enctype="multipart/form-data" >
+
+                                        {{csrf_field()}}
 
 
 
-                                            <button class="btn btn-xs btn-danger">Delete</button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            @endforeach
+                                        <button class="btn btn-xs btn-danger">Delete</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
 
 
 

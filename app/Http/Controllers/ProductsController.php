@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Product;
 use App\ProductPhoto;
+use App\Tag;
 use Illuminate\Http\Request;
 use Session;
 
@@ -86,7 +87,8 @@ class ProductsController extends Controller
     {
         $product=Product::find($id);
         $categories=Category::all();
-        return view('products.edit',compact('categories','product'));
+        $tags=Tag::all();
+        return view('products.edit',compact('categories','product','tags'));
     }
 
     /**
@@ -121,6 +123,12 @@ class ProductsController extends Controller
         } else {
             $product->categories()->sync(array());
         }
+        if (isset($request->tag)) {
+
+            $product->tags()->sync([$request->tag], false);
+        } else {
+            $product->tags()->sync(array());
+        }
 
 
         Session::flash('success','Admin Edited');
@@ -153,14 +161,57 @@ class ProductsController extends Controller
     }
     public function category($id)
     {
+        $categories=Category::all();
         $product=Product::find($id);
-        return view('products.category',compact('product'));
+        return view('products.category',compact('product','categories'));
     }
     public function categorydetach($category_id,$product_id)
-    {
+    {   $categories=Category::all();
         $product=Product::find($product_id);
         $product->categories()->detach($category_id);
-        return view('products.category',compact('product'));
+        return view('products.category',compact('product','categories'));
 
     }
+    public function tag($id)
+    {
+        $tags=Tag::all();
+
+        $product=Product::find($id);
+        return view('products.tag',compact('product','tags'));
+    }
+    public function tagdetach($tag_id,$product_id)
+    {
+        $tags=Tag::all();
+        $product=Product::find($product_id);
+        $product->tags()->detach($tag_id);
+        return view('products.tag',compact('product','tags'));
+
+    }
+    public function tagproduct(Request $request,$id)
+    {
+        $product=Product::find($id);
+        $tags=Tag::all();
+        if (isset($request->tag)) {
+
+            $product->tags()->sync([$request->tag], false);
+        } else {
+            $product->tags()->sync(array());
+        }
+        return view('products.tag',compact('product','tags'));
+
+    }
+    public function categoryproduct(Request $request,$id)
+    {
+        $product=Product::find($id);
+        $categories=Category::all();
+        if (isset($request->category)) {
+
+            $product->categories()->sync([$request->category], false);
+        } else {
+            $product->categories()->sync(array());
+        }
+        return view('products.category',compact('product','categories'));
+
+    }
+
 }

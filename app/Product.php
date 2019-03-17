@@ -16,6 +16,12 @@ class Product extends Model
 
 
 }
+    public function tags()
+    {
+        return $this->belongsToMany('App\Tag','productstags','product_id','tag_id')->withTimestamps();
+
+
+    }
 public function image()
 {
     return $this->belongsTo('App\ProductPhoto','image_id');

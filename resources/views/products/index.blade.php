@@ -26,6 +26,7 @@
                             <th>Name</th>
                             <th>price</th>
                             <th>Category</th>
+                            <th>Tag</th>
                             <th>color</th>
                             <th>size</th>
                             <th>Created at</th>
@@ -43,6 +44,7 @@
                                     <td>{{$product->name}}</td>
                                     <td>{{$product->price}}</td>
                                     <td><a href="{{route('product.category',$product->id)}}"><button class="btn btn-xs btn-info">View Category</button></a> </td>
+                                    <td><a href="{{route('product.tag',$product->id)}}"><button class="btn btn-xs btn-info">View Tag</button></a> </td>
 
                                     <td>{{$product->color}}</td>
                                     <td>{{$product->size}}</td>

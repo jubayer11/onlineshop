@@ -68,6 +68,11 @@ Route::resource('product','ProductsController',['names'=>
     ]]);
 Route::get('product/category/{id}','ProductsController@category')->name('product.category');
 Route::post('product/category/{category_id}/{product_id}','ProductsController@categorydetach')->name('product.category.delete');
+Route::get('product/tag/{id}','ProductsController@tag')->name('product.tag');
+Route::post('product/tag/{tag_id}/{product_id}','ProductsController@tagdetach')->name('product.tag.delete');
+Route::put('product/tag/update/{id}','ProductsController@tagproduct')->name('product.tag.update');
+Route::put('product/category/update/{id}','ProductsController@categoryproduct')->name('product.category.update');
+
 //for category
 Route::get('category/index','ProductCategoryController@index')->name('category.index');
 Route::post('category/store','ProductCategoryController@store')->name('category.store');
@@ -77,7 +82,13 @@ Route::delete('category/destroy/{id}','ProductCategoryController@destroy')->name
 Route::put('category/update/{id}','ProductCategoryController@update')->name('category.update');
 
 
-
+//for tags
+Route::get('tag/index','ProductsTagController@index')->name('tag.index');
+Route::post('tag/store','ProductsTagController@store')->name('tag.store');
+Route::get('tag/create','ProductsTagController@create')->name('tag.create');
+Route::get('tag/edit/{id}','ProductsTagController@edit')->name('tag.edit');
+Route::delete('tag/destroy/{id}','ProductsTagController@destroy')->name('tag.destroy');
+Route::put('tag/update/{id}','ProductsTagController@update')->name('tag.update');
 
 
 //front end dailyshop
