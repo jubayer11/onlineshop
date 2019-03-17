@@ -56,7 +56,7 @@
                 <div id="div_id_password2" class="form-group required">
                     <label for="id_password2" class="control-label col-md-4  requiredField"> Category:<span class="asteriskField">*</span> </label>
                     <div class="controls col-md-8 ">
-                        <select class="input-md textinput textInput form-control" id="id_name"  name="Category"   style="margin-bottom: 10px" >
+                        <select class="input-md textinput textInput form-control" id="id_name"  name="category"   style="margin-bottom: 10px" >
                             @foreach($categories as $category)
                                 <option value="{{$category->id}}">{{$category->name}}</option>
                             @endforeach

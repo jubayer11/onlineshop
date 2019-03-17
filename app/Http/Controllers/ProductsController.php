@@ -19,7 +19,9 @@ class ProductsController extends Controller
 
     {
         $products=Product::all();
-        return view('products.index',compact('products'));
+        $category = Product::with('categories')->get();
+
+        return view('products.index',compact('products','category'));
 
 
     }
@@ -112,9 +114,14 @@ class ProductsController extends Controller
         $product->price=$request->price;
         $product->size=$request->size;
         $product->color=$request->color;
-
-
         $product->save();
+        if (isset($request->category)) {
+
+            $product->categories()->sync([$request->category], false);
+        } else {
+            $product->categories()->sync(array());
+        }
+
 
         Session::flash('success','Admin Edited');
         return redirect()->route('product.index');
@@ -142,6 +149,18 @@ class ProductsController extends Controller
         Session::flash('deleted_user','the user has been deleted');
 
         return  redirect(route('product.index'));
+
+    }
+    public function category($id)
+    {
+        $product=Product::find($id);
+        return view('products.category',compact('product'));
+    }
+    public function categorydetach($category_id,$product_id)
+    {
+        $product=Product::find($product_id);
+        $product->categories()->detach($category_id);
+        return view('products.category',compact('product'));
 
     }
 }

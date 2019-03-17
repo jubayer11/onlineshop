@@ -64,7 +64,10 @@ Route::resource('product','ProductsController',['names'=>
         'store'=>'product.store',
         'edit'=>'product.edit'
 
+
     ]]);
+Route::get('product/category/{id}','ProductsController@category')->name('product.category');
+Route::post('product/category/{category_id}/{product_id}','ProductsController@categorydetach')->name('product.category.delete');
 //for category
 Route::get('category/index','ProductCategoryController@index')->name('category.index');
 Route::post('category/store','ProductCategoryController@store')->name('category.store');

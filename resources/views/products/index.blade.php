@@ -42,13 +42,7 @@
                                     <td><img height="50px" src="{{ URL::to('/') }}/uploads/product/{{$product->image ? $product->image->name: 'no product photo'}}" alt="no photo"></td>
                                     <td>{{$product->name}}</td>
                                     <td>{{$product->price}}</td>
-                                    @if ($product->Category)
-
-                                        <td>{{$product->category}}</td>
-
-                                        @else
-                                        <td>no category</td>
-                                    @endif
+                                    <td><a href="{{route('product.category',$product->id)}}"><button class="btn btn-xs btn-info">View Category</button></a> </td>
 
                                     <td>{{$product->color}}</td>
                                     <td>{{$product->size}}</td>
@@ -76,6 +70,7 @@
             </div>
 
         </div>
+
 
     </div>
 
