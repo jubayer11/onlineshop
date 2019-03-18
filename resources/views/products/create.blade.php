@@ -39,19 +39,9 @@
                         <input class="input-md emailinput form-control" id="id_email" name="price" placeholder="Enter Product Price" style="margin-bottom: 10px" type="text" />
                     </div>
                 </div>
-                <div id="div_id_password1" class="form-group required">
-                    <label for="id_password1" class="control-label col-md-4  requiredField">Size:<span class="asteriskField">*</span> </label>
-                    <div class="controls col-md-8 ">
-                        <input class="input-md textinput textInput form-control" id="id_password1" name="size" placeholder="Enter Product Size:" style="margin-bottom: 10px" type="text" />
-                    </div>
-                </div>
 
-                <div id="div_id_password2" class="form-group required">
-                    <label for="id_password2" class="control-label col-md-4  requiredField"> Color:<span class="asteriskField">*</span> </label>
-                    <div class="controls col-md-8 ">
-                        <input class="input-md textinput textInput form-control" id="id_password2" name="color" placeholder="Enter the color" style="margin-bottom: 10px" type="text" />
-                    </div>
-                </div>
+
+
 
                 <div id="div_id_image" class="form-group required">
                     <label for="id_email" class="control-label col-md-4  requiredField"><span class="asteriskField"></span> </label>

@@ -40,17 +40,25 @@
                         <input class="input-md emailinput form-control" value="{{$product->price}}" name="price" placeholder="Enter Product Price" style="margin-bottom: 10px" type="text" />
                     </div>
                 </div>
-                <div id="div_id_password1" class="form-group required">
-                    <label for="id_password1" class="control-label col-md-4  requiredField">Size:<span class="asteriskField">*</span> </label>
+                <div id="div_id_password2" class="form-group required">
+                    <label for="id_password2" class="control-label col-md-4  requiredField"> Size:<span class="asteriskField">*</span> </label>
                     <div class="controls col-md-8 ">
-                        <input class="input-md textinput textInput form-control" value="{{$product->size}}" name="size" placeholder="Enter Product Size:" style="margin-bottom: 10px" type="text" />
+                        <select class="input-md textinput textInput form-control" id="id_name"  name="size"   style="margin-bottom: 10px" >
+                            @foreach($sizes as $size)
+                                <option value="{{$size->id}}">{{$size->name}}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
 
                 <div id="div_id_password2" class="form-group required">
                     <label for="id_password2" class="control-label col-md-4  requiredField"> Color:<span class="asteriskField">*</span> </label>
                     <div class="controls col-md-8 ">
-                        <input class="input-md textinput textInput form-control" value="{{$product->color}}" name="color" placeholder="Enter the color" style="margin-bottom: 10px" type="text" />
+                        <select class="input-md textinput textInput form-control" id="id_name"  name="color"   style="margin-bottom: 10px" >
+                            @foreach($colors as $color)
+                                <option value="{{$color->id}}">{{$color->name}}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
                 <div id="div_id_password2" class="form-group required">

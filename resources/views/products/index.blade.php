@@ -46,8 +46,8 @@
                                     <td><a href="{{route('product.category',$product->id)}}"><button class="btn btn-xs btn-info">View Category</button></a> </td>
                                     <td><a href="{{route('product.tag',$product->id)}}"><button class="btn btn-xs btn-info">View Tag</button></a> </td>
 
-                                    <td>{{$product->color}}</td>
-                                    <td>{{$product->size}}</td>
+                                    <td><a href="{{route('product.color',$product->id)}}"><button class="btn btn-xs btn-info">View Color</button></a> </td>
+                                    <td><a href="{{route('product.size',$product->id)}}"><button class="btn btn-xs btn-info">View size</button></a> </td>
                                     <td>{{$product->created_at->diffForHumans()}}</td>
                                     <td>{{$product->updated_at->diffForHumans()}}</td>
                                     <td><a href="{{route('product.edit',$product->id)}}"><button class="btn btn-xs btn-primary">Edit</button></a> </td>

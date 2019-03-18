@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Color;
 use App\Product;
 use App\ProductPhoto;
+use App\Size;
 use App\Tag;
 use Illuminate\Http\Request;
 use Session;
@@ -88,7 +90,9 @@ class ProductsController extends Controller
         $product=Product::find($id);
         $categories=Category::all();
         $tags=Tag::all();
-        return view('products.edit',compact('categories','product','tags'));
+        $sizes=Size::all();
+        $colors=Color::all();
+        return view('products.edit',compact('categories','product','tags','sizes','colors'));
     }
 
     /**
@@ -114,8 +118,7 @@ class ProductsController extends Controller
         }
         $product->name=$request->name;
         $product->price=$request->price;
-        $product->size=$request->size;
-        $product->color=$request->color;
+
         $product->save();
         if (isset($request->category)) {
 
@@ -128,6 +131,18 @@ class ProductsController extends Controller
             $product->tags()->sync([$request->tag], false);
         } else {
             $product->tags()->sync(array());
+        }
+        if (isset($request->color)) {
+
+            $product->colors()->sync([$request->color], false);
+        } else {
+            $product->colors()->sync(array());
+        }
+        if (isset($request->size)) {
+
+            $product->sizes()->sync([$request->size], false);
+        } else {
+            $product->sizes()->sync(array());
         }
 
 
@@ -211,6 +226,63 @@ class ProductsController extends Controller
             $product->categories()->sync(array());
         }
         return view('products.category',compact('product','categories'));
+
+    }
+
+    public function size($id)
+    {
+        $sizes=Size::all();
+
+        $product=Product::find($id);
+        return view('products.size',compact('product','sizes'));
+    }
+    public function color($id)
+    {
+        $colors=Color::all();
+
+        $product=Product::find($id);
+        return view('products.color',compact('product','colors'));
+    }
+    public function sizedetach($size_id,$product_id)
+    {
+        $sizes=Color::all();
+        $product=Product::find($product_id);
+        $product->sizes()->detach($size_id);
+        return view('products.size',compact('product','sizes'));
+
+    }
+    public function colordetach($color_id,$product_id)
+    {
+        $colors=Color::all();
+        $product=Product::find($product_id);
+        $product->colors()->detach($color_id);
+        return view('products.color',compact('product','colors'));
+
+    }
+    public function colorproduct(Request $request,$id)
+    {
+        $product=Product::find($id);
+        $colors=Color::all();
+        if (isset($request->color)) {
+
+            $product->colors()->sync([$request->color], false);
+        } else {
+            $product->colors()->sync(array());
+        }
+        return view('products.color',compact('product','colors'));
+
+    }
+    public function sizeproduct(Request $request,$id)
+    {
+        $product=Product::find($id);
+        $sizes=Size::all();
+        if (isset($request->size)) {
+
+            $product->sizes()->sync([$request->size], false);
+        } else {
+            $product->sizes()->sync(array());
+        }
+        return view('products.size',compact('product','sizes'));
 
     }
 

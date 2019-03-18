@@ -66,12 +66,24 @@ Route::resource('product','ProductsController',['names'=>
 
 
     ]]);
+//for category
 Route::get('product/category/{id}','ProductsController@category')->name('product.category');
 Route::post('product/category/{category_id}/{product_id}','ProductsController@categorydetach')->name('product.category.delete');
+Route::put('product/category/update/{id}','ProductsController@categoryproduct')->name('product.category.update');
+//for tag
+
 Route::get('product/tag/{id}','ProductsController@tag')->name('product.tag');
 Route::post('product/tag/{tag_id}/{product_id}','ProductsController@tagdetach')->name('product.tag.delete');
 Route::put('product/tag/update/{id}','ProductsController@tagproduct')->name('product.tag.update');
-Route::put('product/category/update/{id}','ProductsController@categoryproduct')->name('product.category.update');
+//for color
+
+Route::get('product/color/{id}','ProductsController@color')->name('product.color');
+Route::post('product/color/{color_id}/{product_id}','ProductsController@colordetach')->name('product.color.delete');
+Route::put('product/color/update/{id}','ProductsController@colorproduct')->name('product.color.update');
+//for size
+Route::get('product/size/{id}','ProductsController@size')->name('product.size');
+Route::post('product/size/{size_id}/{product_id}','ProductsController@sizedetach')->name('product.size.delete');
+Route::put('product/size/update/{id}','ProductsController@sizeproduct')->name('product.size.update');
 
 //for category
 Route::get('category/index','ProductCategoryController@index')->name('category.index');
@@ -89,6 +101,22 @@ Route::get('tag/create','ProductsTagController@create')->name('tag.create');
 Route::get('tag/edit/{id}','ProductsTagController@edit')->name('tag.edit');
 Route::delete('tag/destroy/{id}','ProductsTagController@destroy')->name('tag.destroy');
 Route::put('tag/update/{id}','ProductsTagController@update')->name('tag.update');
+
+//for size
+Route::get('size/index','ProductSizeController@index')->name('size.index');
+Route::post('size/store','ProductSizeController@store')->name('size.store');
+Route::get('size/create','ProductSizeController@create')->name('size.create');
+Route::get('size/edit/{id}','ProductSizeController@edit')->name('size.edit');
+Route::delete('size/destroy/{id}','ProductSizeController@destroy')->name('size.destroy');
+Route::put('size/update/{id}','ProductSizeController@update')->name('size.update');
+
+//for color
+Route::get('color/index','ProductColorController@index')->name('color.index');
+Route::post('color/store','ProductColorController@store')->name('color.store');
+Route::get('color/create','ProductColorController@create')->name('color.create');
+Route::get('color/edit/{id}','ProductColorController@edit')->name('color.edit');
+Route::delete('color/destroy/{id}','ProductColorController@destroy')->name('color.destroy');
+Route::put('color/update/{id}','ProductColorController@update')->name('color.update');
 
 
 //front end dailyshop
