@@ -85,10 +85,91 @@
 
                                     </article>
                                     <!-- blog navigation -->
+
                                     <div class="aa-blog-navigation">
                                         <a class="aa-blog-prev" href="#"><span class="fa fa-arrow-left"></span>Prev Post</a>
                                         <a class="aa-blog-next" href="#">Next Post<span class="fa fa-arrow-right"></span></a>
                                     </div>
+
+                                    <!--custom comment -->
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="checkout-area">
+                                                <form action="">
+                                                    <div class="row">
+                                                        <div class="col-md-8">
+                                                            <div class="checkout-left">
+                                                                <div class="panel-group" id="accordion">
+
+
+                                                                    <!-- Login section -->
+                                                                    <div class="panel panel-default aa-checkout-login">
+                                                                        <div class="panel-heading">
+                                                                            <h4 class="panel-title">
+                                                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                                                                                    Client Login
+                                                                                </a>
+                                                                            </h4>
+                                                                        </div>
+                                                                        <div id="collapseTwo" class="panel-collapse collapse">
+                                                                            <div class="panel-body">
+                                                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat voluptatibus modi pariatur qui reprehenderit asperiores fugiat deleniti praesentium enim incidunt.</p>
+                                                                                <input type="text" placeholder="Username or email">
+                                                                                <input type="password" placeholder="Password">
+                                                                                <button type="submit" class="aa-browse-btn">Login</button>
+                                                                                <label for="rememberme"><input type="checkbox" id="rememberme"> Remember me </label>
+                                                                                <p class="aa-lost-password"><a href="#">Lost your password?</a></p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="checkout-area">
+                                                <form action="">
+                                                    <div class="row">
+                                                        <div class="col-md-8">
+                                                            <div class="checkout-left">
+                                                                <div class="panel-group" id="accordion">
+
+
+                                                                    <!-- Login section -->
+                                                                    <div class="panel panel-default aa-checkout-login">
+                                                                        <div class="panel-heading">
+                                                                            <h4 class="panel-title">
+                                                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                                                                                    Client Login
+                                                                                </a>
+                                                                            </h4>
+                                                                        </div>
+                                                                        <div id="collapseTwo" class="panel-collapse collapse">
+                                                                            <div class="panel-body">
+                                                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat voluptatibus modi pariatur qui reprehenderit asperiores fugiat deleniti praesentium enim incidunt.</p>
+                                                                                <input type="text" placeholder="Username or email">
+                                                                                <input type="password" placeholder="Password">
+                                                                                <button type="submit" class="aa-browse-btn">Login</button>
+                                                                                <label for="rememberme"><input type="checkbox" id="rememberme"> Remember me </label>
+                                                                                <p class="aa-lost-password"><a href="#">Lost your password?</a></p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                     <!-- Blog Comment threats -->
                                     <div class="aa-blog-comment-threat">
                                         <h3>Comments (4)</h3>
@@ -188,6 +269,7 @@
                                             </nav>
                                         </div>
                                     </div>
+
                                     <!-- blog comments form -->
                                     <div id="respond">
                                         <h3 class="reply-title">Leave a Comment</h3>

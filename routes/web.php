@@ -66,15 +66,32 @@ Route::resource('product','ProductsController',['names'=>
 
 
     ]]);
+
+//for Post
+Route::resource('post','PostsController',['name'=>
+[
+    'index'=>'post.index',
+    'create'=>'post.create',
+    'store'=>'post.store',
+    'edit'=>'post.edit'
+
+]]);
 //for category
 Route::get('product/category/{id}','ProductsController@category')->name('product.category');
 Route::post('product/category/{category_id}/{product_id}','ProductsController@categorydetach')->name('product.category.delete');
 Route::put('product/category/update/{id}','ProductsController@categoryproduct')->name('product.category.update');
-//for tag
+//for tag in product
 
 Route::get('product/tag/{id}','ProductsController@tag')->name('product.tag');
 Route::post('product/tag/{tag_id}/{product_id}','ProductsController@tagdetach')->name('product.tag.delete');
 Route::put('product/tag/update/{id}','ProductsController@tagproduct')->name('product.tag.update');
+
+//
+//for tag in post
+
+Route::get('post/tag/{id}','PostsController@tag')->name('post.tag');
+Route::post('post/tag/{tag_id}/{post_id}','PostsController@tagdetach')->name('post.tag.delete');
+Route::put('post/tag/update/{id}','PostsController@tagpost')->name('post.tag.update');
 //for color
 
 Route::get('product/color/{id}','ProductsController@color')->name('product.color');

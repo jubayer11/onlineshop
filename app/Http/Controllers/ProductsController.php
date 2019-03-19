@@ -22,9 +22,9 @@ class ProductsController extends Controller
 
     {
         $products=Product::all();
-        $category = Product::with('categories')->get();
 
-        return view('products.index',compact('products','category'));
+
+        return view('products.index',compact('products'));
 
 
     }
@@ -285,5 +285,8 @@ class ProductsController extends Controller
         return view('products.size',compact('product','sizes'));
 
     }
+
+
+
 
 }
