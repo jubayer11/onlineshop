@@ -82,6 +82,7 @@ class DashboardController extends Controller
 
 
 
+
         return view('admin.super.dashboard.user',compact('admin','status','role'));
     }
 

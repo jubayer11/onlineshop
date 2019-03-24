@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 class ProductColorController extends Controller
 {
     //
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+        $this->middleware('SAdmin');
+    }
 
 
     public function index()

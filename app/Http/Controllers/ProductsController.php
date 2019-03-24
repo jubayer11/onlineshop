@@ -8,7 +8,10 @@ use App\Product;
 use App\ProductPhoto;
 use App\Size;
 use App\Tag;
+use App\Admin;
+use App\Role;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Session;
 
 class ProductsController extends Controller
@@ -18,6 +21,11 @@ class ProductsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth:admin');
+        $this->middleware('SAdmin');
+    }
     public function index()
 
     {
@@ -37,6 +45,7 @@ class ProductsController extends Controller
     public function create()
     {
         //
+
         $categories=Category::all();
 
         return view('products.create',compact('categories'));
@@ -160,16 +169,16 @@ class ProductsController extends Controller
     {
         $product=Product::findOrFail($id);
         if($request->file('image')==''){
-            $input=$request->except('photo_id');
+            $input=$request->except('image_id');
         }
         else{
             $input=$request->all();
-            unlink(public_path()."/images/".$product->image->name);
+            unlink(public_path()."/uploads/product/".$product->image->name);
 
         }
 
         $product->delete($input);
-        Session::flash('deleted_user','the user has been deleted');
+        Session::flash('deleted_product','the user has been deleted');
 
         return  redirect(route('product.index'));
 

@@ -7,6 +7,8 @@ use App\PostPhoto;
 use App\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Gate;
+use Session;
 
 class PostsController extends Controller
 {
@@ -19,6 +21,7 @@ class PostsController extends Controller
     public function __construct()
     {
         $this->middleware('auth:admin');
+        $this->middleware('SEditor');
 
     }
     public function index()
@@ -79,11 +82,20 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        //
-        $post=Post::find($id);
-        $tags=Tag::all();
-        return view('post.edit',compact('post','tags'));
+         $posts=Post::find($id);
+         $admin=Auth::user()->id;
+        if (Gate::allows('admin-only',$posts,$admin)) {
+            $post=Post::find($id);
+            $tags=Tag::all();
+            return view('post.edit',compact('post','tags'));
+        }
+        else
+        {
+            return 'you are not allowed to edit this posts';
+        }
+
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -93,30 +105,32 @@ class PostsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
+
     {
-        $post=Post::find($id);
 
-        if($request->hasFile('image'))
-        {
-            $post_image=$request->image;
-            $post_image_new_name=time().$post_image->getClientOriginalName();
-            $post_image->move('uploads/post',$post_image_new_name);
-            $photo=PostPhoto::create(['name'=>$post_image_new_name]);
-            $post->photo_id=$photo->id;
+            $post = Post::find($id);
+
+            if ($request->hasFile('image')) {
+                $post_image = $request->image;
+                $post_image_new_name = time() . $post_image->getClientOriginalName();
+                $post_image->move('uploads/post', $post_image_new_name);
+                $photo = PostPhoto::create(['name' => $post_image_new_name]);
+                $post->photo_id = $photo->id;
+                $post->save();
+
+            }
+            $post->title = $request->title;
+            $post->body = $request->body;
+            if (isset($request->tag)) {
+
+                $post->tags()->sync([$request->tag], false);
+            } else {
+                $post->tags()->sync(array());
+            }
+            $post->is_active = $request->is_active;
             $post->save();
+            return redirect()->route('post.index');
 
-        }
-        $post->title=$request->title;
-        $post->body=$request->body;
-        if (isset($request->tag)) {
-
-            $post->tags()->sync([$request->tag], false);
-        } else {
-            $post->tags()->sync(array());
-        }
-        $post->is_active=$request->is_active;
-        $post->save();
-        return redirect()->route('post.index');
 
 
     }
@@ -127,19 +141,55 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request,$id)
     {
-        //
+
+
+
+        $posts=Post::find($id);
+        $admin=Auth::user()->id;
+        if (Gate::allows('admin-only',$posts,$admin)) {
+            $post=Post::findOrFail($id);
+            if($request->file('photo_id')==''){
+                $input=$request->except('photo_id');
+            }
+            else{
+                $input=$request->all();
+                unlink(public_path()."/uploads/post".$post->image->name);
+
+            }
+
+            $post->delete($input);
+            Session::flash('deleted_user','the user has been deleted');
+
+            return  redirect(route('post.index'));
+        }
+        else
+        {
+            return 'you are not allowed to delete this posts';
+        }
     }
 
 
 
     public function tag($id)
     {
-        $tags=Tag::all();
 
-        $post=Post::find($id);
-        return view('post.tag',compact('post','tags'));
+
+
+
+        $posts=Post::find($id);
+        $admin=Auth::user()->id;
+        if (Gate::allows('admin-only',$posts,$admin)) {
+            $tags=Tag::all();
+
+            $post=Post::find($id);
+            return view('post.tag',compact('post','tags'));
+        }
+        else
+        {
+            return 'you are not allowed to edit the tag of this  posts';
+        }
     }
     public function tagdetach($tag_id,$post_id)
     {

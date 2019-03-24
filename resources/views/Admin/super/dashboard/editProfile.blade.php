@@ -165,3 +165,26 @@
         </li>
     @endif
 @endsection
+@section('Admin')
+    @if(($role=='SuperAdmin' || $role=='Admin') && $admin->status==1 )
+
+        <li>
+            <a href="{{route('super.admin.index')}}">
+                <i class="pe-7s-display2"></i>
+                <p>ALL Product</p>
+            </a>
+        </li>
+    @endif
+@endsection
+@section('Post')
+    @if(($role=='SuperAdmin' || $role=='Admin'  || $role=='Editor') && $status==1 )
+
+        <li>
+            <a href="{{route('post.index')}}">
+                <i class="pe-7s-note2"></i>
+                <p>ALL Post</p>
+            </a>
+        </li>
+    @endif
+@endsection
+

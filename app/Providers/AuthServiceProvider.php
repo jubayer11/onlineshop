@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Admin;
+use App\Policies\PostPolicy;
+use App\Post;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
@@ -14,6 +17,8 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         'App\Model' => 'App\Policies\ModelPolicy',
+        Admin::class=>PostPolicy::class,
+        Post::class=>PostPolicy::class
     ];
 
     /**
@@ -24,7 +29,7 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
-
-        //
+        Gate::define('admin-only','App\Policies\PostPolicy@admin_only');
+        //Gate::resource('admin-only','App\Policies\PostPolicy');
     }
 }

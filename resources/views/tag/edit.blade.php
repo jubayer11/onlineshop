@@ -55,4 +55,32 @@
 
 
 @endsection
+@section('SuperAdmin')
+    @if(Auth::user()->role_id==1 && Auth::user()->status==1)
+
+        <li>
+            <a href="{{route('super.admin.index')}}">
+                <i class="pe-7s-users"></i>
+                <p>ALL ADMIN</p>
+            </a>
+        </li>
+    @endif
+@endsection
+@section('Admin')
+    @if(((Auth::user()->role_id==1 ||Auth::user()->role_id==2) && Auth::user()->status==1))
+
+        <li>
+            <a href="{{route('product.index')}}">
+                <i class="pe-7s-display2"></i>
+                <p>ALL Product</p>
+            </a>
+        </li>
+        <li>
+            <a href="{{route('post.index')}}">
+                <i class="pe-7s-note2"></i>
+                <p>ALL Post</p>
+            </a>
+        </li>
+    @endif
+@endsection
 

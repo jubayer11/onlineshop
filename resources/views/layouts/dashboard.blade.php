@@ -65,6 +65,8 @@
                 </li>
                 @yield('SuperAdmin')
                 @yield('Admin')
+                @yield('Post')
+
 
 
                 <li>

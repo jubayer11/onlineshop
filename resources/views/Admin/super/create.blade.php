@@ -93,7 +93,7 @@
 
 @endsection
 @section('SuperAdmin')
-    @if($r=='SuperAdmin')
+    @if($r=='SuperAdmin' && Auth::user()->status==1)
 
         <li>
             <a href="{{route('super.admin.index')}}">
@@ -101,5 +101,18 @@
                 <p>ALL ADMIN</p>
             </a>
         </li>
+        <li>
+            <a href="{{route('product.index')}}">
+                <i class="pe-7s-display2"></i>
+                <p>ALL Product</p>
+            </a>
+        </li>
+        <li>
+            <a href="{{route('post.index')}}">
+                <i class="pe-7s-note2"></i>
+                <p>ALL Post</p>
+            </a>
+        </li>
     @endif
 @endsection
+

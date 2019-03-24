@@ -150,3 +150,13 @@ Route::get('dailyshop/product-detail','VisitOnlineshopController@productDetail')
 Route::get('dailyshop/wishlist','VisitOnlineshopController@wishlist')->name('dailyshop.wishlist');
 
 
+//for carousel
+
+
+Route::resource('dailyshop/carousel','CarouselController',['name'=>
+[
+    'index'=>'carousel.index',
+    'edit'=>'carousel.edit',
+    'create'=>'carousel.edit',
+    'store'=>'carousel.edit'
+]]);
