@@ -7,6 +7,7 @@ use App\Color;
 use App\Product;
 use App\ProductPhoto;
 use App\Size;
+use App\SubCategory;
 use App\Tag;
 use App\Admin;
 use App\Role;
@@ -98,10 +99,11 @@ class ProductsController extends Controller
     {
         $product=Product::find($id);
         $categories=Category::all();
+        $sub_categories=Category::all();
         $tags=Tag::all();
         $sizes=Size::all();
         $colors=Color::all();
-        return view('products.edit',compact('categories','product','tags','sizes','colors'));
+        return view('products.edit',compact('categories','product','tags','sizes','colors','sub_categories'));
     }
 
     /**
@@ -294,6 +296,41 @@ class ProductsController extends Controller
         return view('products.size',compact('product','sizes'));
 
     }
+
+    public function sub_category($id)
+    {
+        $sub_categories=SubCategory::all();
+        $product=Product::find($id);
+        return view('products.sub_category',compact('product','sub_categories'));
+    }
+    public function sub_categorydetach($category_id,$product_id)
+    {   $sub_categories=SubCategory::all();
+        $product=Product::find($product_id);
+        $product->sub_categories()->detach($category_id);
+        return view('products.sub_category',compact('product','sub_categories'));
+
+    }
+
+    public function sub_categoryproduct(Request $request,$id)
+    {
+        $product=Product::find($id);
+        $sub_categories=SubCategory::all();
+        if (isset($request->sub_category)) {
+
+            $product->sub_categories()->sync([$request->sub_category], false);
+        } else {
+            $product->sub_categories()->sync(array());
+        }
+        return view('products.sub_category',compact('product','sub_categories'));
+
+    }
+
+    public function quickview($id)
+    {
+        dd($id);
+    }
+
+
 
 
 

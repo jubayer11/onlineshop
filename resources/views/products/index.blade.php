@@ -28,6 +28,7 @@
                             <th>Name</th>
                             <th>price</th>
                             <th>Category</th>
+                            <th>Sub Category</th>
                             <th>Tag</th>
                             <th>color</th>
                             <th>size</th>
@@ -46,6 +47,7 @@
                                     <td>{{$product->name}}</td>
                                     <td>{{$product->price}}</td>
                                     <td><a href="{{route('product.category',$product->id)}}"><button class="btn btn-xs btn-info">View Category</button></a> </td>
+                                    <td><a href="{{route('product.sub_category',$product->id)}}"><button class="btn btn-xs btn-info">View Sub Category</button></a> </td>
                                     <td><a href="{{route('product.tag',$product->id)}}"><button class="btn btn-xs btn-info">View Tag</button></a> </td>
 
                                     <td><a href="{{route('product.color',$product->id)}}"><button class="btn btn-xs btn-info">View Color</button></a> </td>
@@ -81,6 +83,7 @@
             <div class="btn-group-vertical">
 
                         <button type="button" class="btn btn-group-justified"><a href="{{route('category.index')}}">Create Category</a></button>
+                        <button type="button" class="btn btn-group-justified"><a href="{{route('sub_category.index')}}">Create Sub Category</a></button>
                         <button type="button" class="btn btn-group-justified"><a href="{{route('color.index')}}">Create Color</a></button>
                         <button type="button" class="btn btn-group-justified"><a href="{{route('size.index')}}">Create Size</a></button>
                         <button type="button" class="btn btn-group-justified"><a href="{{route('tag.index')}}">Create Tag</a> </button>

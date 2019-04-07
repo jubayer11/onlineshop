@@ -72,6 +72,16 @@
                     </div>
                 </div>
                 <div id="div_id_password2" class="form-group required">
+                    <label for="id_password2" class="control-label col-md-4  requiredField"> sub_category:<span class="asteriskField">*</span> </label>
+                    <div class="controls col-md-8 ">
+                        <select class="input-md textinput textInput form-control" id="id_name"  name="sub_category"   style="margin-bottom: 10px" >
+                            @foreach($sub_categories as $sub_category)
+                                <option value="{{$sub_category->id}}">{{$sub_category->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div id="div_id_password2" class="form-group required">
                     <label for="id_password2" class="control-label col-md-4  requiredField"> Tag:<span class="asteriskField">*</span> </label>
                     <div class="controls col-md-8 ">
                         <select class="input-md textinput textInput form-control" id="id_name"  name="tag"   style="margin-bottom: 10px" >

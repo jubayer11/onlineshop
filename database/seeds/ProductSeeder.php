@@ -1,6 +1,9 @@
 <?php
 
+use App\Category;
 use App\Product;
+use App\SubCategory;
+use App\Tag;
 use Illuminate\Database\Seeder;
 
 class ProductSeeder extends Seeder
@@ -33,5 +36,10 @@ class ProductSeeder extends Seeder
         Product::create($p1);
         Product::create($p2);
         Product::create($p3);
+        //factory(Product::class,50)->create();
+        //factory(Category::class,50)->create();
+       // factory(SubCategory::class,50)->create();
+        //factory(Tag::class,50)->create();
     }
+
 }

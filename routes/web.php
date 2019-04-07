@@ -76,15 +76,26 @@ Route::resource('post','PostsController',['name'=>
     'edit'=>'post.edit'
 
 ]]);
-//for category
+//for category in product
 Route::get('product/category/{id}','ProductsController@category')->name('product.category');
 Route::post('product/category/{category_id}/{product_id}','ProductsController@categorydetach')->name('product.category.delete');
 Route::put('product/category/update/{id}','ProductsController@categoryproduct')->name('product.category.update');
+
+
+//for sub_category in product
+Route::get('product/sub_category/{id}','ProductsController@sub_category')->name('product.sub_category');
+Route::post('product/sub_category/{sub_category_id}/{product_id}','ProductsController@sub_categorydetach')->name('product.sub_category.delete');
+Route::put('product/sub_category/update/{id}','ProductsController@sub_categoryproduct')->name('product.sub_category.update');
+
 //for tag in product
 
 Route::get('product/tag/{id}','ProductsController@tag')->name('product.tag');
 Route::post('product/tag/{tag_id}/{product_id}','ProductsController@tagdetach')->name('product.tag.delete');
 Route::put('product/tag/update/{id}','ProductsController@tagproduct')->name('product.tag.update');
+
+//quickview in product
+Route::get('product/quick_view/{id}','VisitOnlineshopController@quickview')->name('product.quick_view');
+
 
 //
 //for tag in post
@@ -92,12 +103,12 @@ Route::put('product/tag/update/{id}','ProductsController@tagproduct')->name('pro
 Route::get('post/tag/{id}','PostsController@tag')->name('post.tag');
 Route::post('post/tag/{tag_id}/{post_id}','PostsController@tagdetach')->name('post.tag.delete');
 Route::put('post/tag/update/{id}','PostsController@tagpost')->name('post.tag.update');
-//for color
+//for color in post
 
 Route::get('product/color/{id}','ProductsController@color')->name('product.color');
 Route::post('product/color/{color_id}/{product_id}','ProductsController@colordetach')->name('product.color.delete');
 Route::put('product/color/update/{id}','ProductsController@colorproduct')->name('product.color.update');
-//for size
+//for size in post
 Route::get('product/size/{id}','ProductsController@size')->name('product.size');
 Route::post('product/size/{size_id}/{product_id}','ProductsController@sizedetach')->name('product.size.delete');
 Route::put('product/size/update/{id}','ProductsController@sizeproduct')->name('product.size.update');
@@ -110,6 +121,13 @@ Route::get('category/edit/{id}','ProductCategoryController@edit')->name('categor
 Route::delete('category/destroy/{id}','ProductCategoryController@destroy')->name('category.destroy');
 Route::put('category/update/{id}','ProductCategoryController@update')->name('category.update');
 
+//for sub_category
+Route::get('sub_category/index','SubCategoryController@index')->name('sub_category.index');
+Route::post('sub_category/store','SubCategoryController@store')->name('sub_category.store');
+Route::get('sub_category/create','SubCategoryController@create')->name('sub_category.create');
+Route::get('sub_category/edit/{id}','SubCategoryController@edit')->name('sub_category.edit');
+Route::delete('sub_category/destroy/{id}','SubCategoryController@destroy')->name('sub_category.destroy');
+Route::put('sub_category/update/{id}','SubCategoryController@update')->name('sub_category.update');
 
 //for tags
 Route::get('tag/index','ProductsTagController@index')->name('tag.index');
@@ -150,6 +168,11 @@ Route::get('dailyshop/product-detail','VisitOnlineshopController@productDetail')
 Route::get('dailyshop/wishlist','VisitOnlineshopController@wishlist')->name('dailyshop.wishlist');
 
 
+//for product category in daiylyshop
+Route::get('dailyshop/product/category/{id}','VisitOnlineshopController@index2')->name('dailyshop.index.category');
+
+
+
 //for carousel
 
 
@@ -160,3 +183,12 @@ Route::resource('dailyshop/carousel','CarouselController',['name'=>
     'create'=>'carousel.edit',
     'store'=>'carousel.edit'
 ]]);
+
+//for secondCarousel
+
+Route::get('dailyshop/second_carousel','CarouselController@second_index')->name('second_carousel.index');
+Route::post('dailyshop/second_carousel/store','CarouselController@second_store')->name('second_carousel.store');
+Route::get('dailyshop/second_carousel/create','CarouselController@second_create')->name('second_carousel.create');
+Route::get('dailyshop/second_carousel/edit/{id}','CarouselController@second_edit')->name('second_carousel.edit');
+Route::delete('dailyshop/second_carousel/destroy/{id}','CarouselController@second_destroy')->name('second_carousel.destroy');
+Route::put('dailyshop/second_carousel/update/{id}','CarouselController@second_update')->name('second_carousel.update');

@@ -16,6 +16,12 @@ class Product extends Model
 
 
 }
+    public function sub_categories()
+    {
+        return $this->belongsToMany('App\SubCategory','sub_category','product_id','category_id')->withTimestamps();
+
+
+    }
     public function tags()
     {
         return $this->belongsToMany('App\Tag','productstags','product_id','tag_id')->withTimestamps();
