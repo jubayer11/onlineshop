@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Online Shop | Home</title>
-
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>e-commerce website</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Font awesome -->
     <link href="{{asset('front/css/font-awesome.css')}}" rel="stylesheet">
     <!-- Bootstrap -->
@@ -17,7 +18,7 @@
     <!-- slick slider -->
     <link rel="stylesheet" type="text/css" href="{{asset('front/css/slick.css')}}">
     <!-- price picker slider -->
-    <link rel="stylesheet" type="text/css" href="{{asset('css/nouislider.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('front/css/nouislider.css')}}">
     <!-- Theme color -->
     <link id="switcher" href="{{asset('front/css/theme-color/dark-red-theme.css')}}" rel="stylesheet">
     <!-- <link id="switcher" href="css/theme-color/bridge-theme.css" rel="stylesheet"> -->
@@ -38,6 +39,7 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <link rel="stylesheet" href="{{asset('css/app.css')}}">
 
 
 </head>
@@ -445,7 +447,7 @@
     </div><!-- /.modal-dialog -->
 </div>
 
-<!-- jQuery library -->
+<script src="{{asset('js/app.js')}}"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="{{asset('front/js/bootstrap.js')}}"></script>

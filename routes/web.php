@@ -192,3 +192,8 @@ Route::get('dailyshop/second_carousel/create','CarouselController@second_create'
 Route::get('dailyshop/second_carousel/edit/{id}','CarouselController@second_edit')->name('second_carousel.edit');
 Route::delete('dailyshop/second_carousel/destroy/{id}','CarouselController@second_destroy')->name('second_carousel.destroy');
 Route::put('dailyshop/second_carousel/update/{id}','CarouselController@second_update')->name('second_carousel.update');
+
+
+
+//for vuejs
+Route::view('/start','home_vue');
