@@ -1,15 +1,10 @@
 <template>
     <div>
-        <!-- start prduct navigation -->
         <ul class="nav nav-tabs aa-products-tab">
-            <router-link
-                    v-for="category in categories"
-                    :key="category.name"
-                    :to="category.to"
-            >
-                <li>{{category.name}}</li>
-
-            </router-link>
+            <li class="active"><a href="#men" data-toggle="tab">Men</a></li>
+            <li><a href="#women" data-toggle="tab">Women</a></li>
+            <li><a href="#sports" data-toggle="tab">Sports</a></li>
+            <li><a href="#electronics" data-toggle="tab">Electronics</a></li>
         </ul>
     </div>
 </template>
@@ -17,16 +12,7 @@
 
     export default {
 
-        data(){
-            return {
-                categories:[
-                    {name:"Men",to:"/men",show: true},
-                    {name:"WoMen",to:"/Women"},
-                    {name:"Sports",to:"/sports"},
-                    {name:"Electricity",to:"/electricity"}
-                ]
-            }
-        },
+
 
     }
 

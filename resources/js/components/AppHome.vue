@@ -1,5 +1,6 @@
 <template>
     <div>
+        <!-- Products section -->
         <section id="aa-product">
             <div class="container">
                 <div class="row">
@@ -9,21 +10,96 @@
                                 <div class="aa-product-inner">
                                     <!-- start prduct navigation -->
                                     <ul class="nav nav-tabs aa-products-tab">
-                                       <toolbar></toolbar>
+                                       <li   v-for="category in categories" @click="createdo(category);category1(category)"><a :href="href()" data-toggle="tab">{{category.name}}</a></li>
                                     </ul>
                                     <!-- Tab panes -->
                                     <div class="tab-content">
                                         <!-- Start men product category -->
-                                        <router-view>
-                                        </router-view>
+                                        <tab-menue :data="target" :data1="products"> </tab-menue>
 
                                         <!-- / men product category -->
-
                                     </div>
-                                    <!--quick view modal-->
-                                    <quick-view> </quick-view>
+                                    <!-- quick view modal -->
+                                    <div class="modal fade" id="quick-view-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-body">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                    <div class="row">
+                                                        <!-- Modal view slider -->
+                                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                                            <div class="aa-product-view-slider">
+                                                                <div class="simpleLens-gallery-container" id="demo-1">
+                                                                    <div class="simpleLens-container">
+                                                                        <div class="simpleLens-big-image-container">
+                                                                            <a class="simpleLens-lens-image" data-lens-image="img/view-slider/large/polo-shirt-1.png">
+                                                                                <img src="img/view-slider/medium/polo-shirt-1.png" class="simpleLens-big-image">
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="simpleLens-thumbnails-container">
+                                                                        <a href="#" class="simpleLens-thumbnail-wrapper"
+                                                                           data-lens-image="img/view-slider/large/polo-shirt-1.png"
+                                                                           data-big-image="img/view-slider/medium/polo-shirt-1.png">
+                                                                            <img src="img/view-slider/thumbnail/polo-shirt-1.png">
+                                                                        </a>
+                                                                        <a href="#" class="simpleLens-thumbnail-wrapper"
+                                                                           data-lens-image="img/view-slider/large/polo-shirt-3.png"
+                                                                           data-big-image="img/view-slider/medium/polo-shirt-3.png">
+                                                                            <img src="img/view-slider/thumbnail/polo-shirt-3.png">
+                                                                        </a>
 
-
+                                                                        <a href="#" class="simpleLens-thumbnail-wrapper"
+                                                                           data-lens-image="img/view-slider/large/polo-shirt-4.png"
+                                                                           data-big-image="img/view-slider/medium/polo-shirt-4.png">
+                                                                            <img src="img/view-slider/thumbnail/polo-shirt-4.png">
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- Modal view content -->
+                                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                                            <div class="aa-product-view-content">
+                                                                <h3>T-Shirt</h3>
+                                                                <div class="aa-price-block">
+                                                                    <span class="aa-product-view-price">$34.99</span>
+                                                                    <p class="aa-product-avilability">Avilability: <span>In stock</span></p>
+                                                                </div>
+                                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis animi, veritatis quae repudiandae quod nulla porro quidem, itaque quis quaerat!</p>
+                                                                <h4>Size</h4>
+                                                                <div class="aa-prod-view-size">
+                                                                    <a href="#">S</a>
+                                                                    <a href="#">M</a>
+                                                                    <a href="#">L</a>
+                                                                    <a href="#">XL</a>
+                                                                </div>
+                                                                <div class="aa-prod-quantity">
+                                                                    <form action="">
+                                                                        <select name="" >
+                                                                            <option value="0" selected="1">1</option>
+                                                                            <option value="1">2</option>
+                                                                            <option value="2">3</option>
+                                                                            <option value="3">4</option>
+                                                                            <option value="4">5</option>
+                                                                            <option value="5">6</option>
+                                                                        </select>
+                                                                    </form>
+                                                                    <p class="aa-prod-category">
+                                                                        Category: <a href="#">Polo T-Shirt</a>
+                                                                    </p>
+                                                                </div>
+                                                                <div class="aa-prod-view-bottom">
+                                                                    <a href="#" class="aa-add-to-cart-btn"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
+                                                                    <a href="#" class="aa-add-to-cart-btn">View Details</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div><!-- /.modal-content -->
+                                        </div><!-- /.modal-dialog -->
+                                    </div><!-- / quick view modal -->
                                 </div>
                             </div>
                         </div>
@@ -31,6 +107,7 @@
                 </div>
             </div>
         </section>
+        <!-- / Products section -->
     </div>
 </template>
 <script>
@@ -38,22 +115,43 @@
     import tabMenue from './Tabmenue.vue';
     import quickView from './quickView.vue';
     export default {
+
         components:{tabMenue,quickView,toolbar},
         data(){
             return {
-                categories:[
-                    {name:"Men",to:"/men",show: true},
-                    {name:"WoMen",to:"/Women"},
-                    {name:"Sports",to:"/men"},
-                    {name:"Electricity",to:"/men"}
-                ]
+                target:{},
+                categories:{},
+                products:{},
+
             }
+
+        },
+        created(){
+            axios.get('/api/category')
+                .then(res => this.categories = res.data.data)
+                .catch(error => console.log(error.response.data))
         },
 
+       methods:
+            {
+
+                category1(category){
+                    this.target= category;
+
+                },
+                href(){
+                    return "#" + this.target.name;
+                },
+                createdo(category){
+                    axios.get("/api/category/"+ category.id)
+                        .then(res => this.products = res.data.data)
+                        .catch(error => console.log(error.response.data))
+
+
+                },
+            },
+
     }
-
-
-
 </script>
 <style>
 

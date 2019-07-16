@@ -18,5 +18,18 @@ class ApiProductController extends Controller
     public function index1(){
         return CategoryResource::collection(Category::latest()->get());
     }
+    public function category(){
+        return CategoryResource::collection(Category::take(4)->get());
+    }
+
+    public function onecategory(Category $id){
+      return ProductsResource::collection($id->products);
+
+  }
+
+
+
+
+
 
 }
