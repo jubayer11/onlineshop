@@ -12,11 +12,12 @@
                                 <div class="simpleLens-gallery-container" id="demo-1">
                                     <div class="simpleLens-container">
                                         <div class="simpleLens-big-image-container">
-                                            <a class="simpleLens-lens-image" data-lens-image="img/view-slider/large/polo-shirt-1.png">
-                                                <img src="img/view-slider/medium/polo-shirt-1.png" class="simpleLens-big-image">
+                                            <a class="simpleLens-lens-image" :data-lens-image="getproductphoto()">
+                                                <img :src="getproductphoto()" class="simpleLens-big-image">
                                             </a>
                                         </div>
                                     </div>
+                                    <ul>
                                     <div class="simpleLens-thumbnails-container">
                                         <a href="#" class="simpleLens-thumbnail-wrapper"
                                            data-lens-image="img/view-slider/large/polo-shirt-1.png"
@@ -35,24 +36,22 @@
                                             <img src="img/view-slider/thumbnail/polo-shirt-4.png">
                                         </a>
                                     </div>
+                                        </ul>
                                 </div>
                             </div>
                         </div>
                         <!-- Modal view content -->
                         <div class="col-md-6 col-sm-6 col-xs-12">
                             <div class="aa-product-view-content">
-                                <h3>T-Shirt</h3>
+                                <h3>{{pro.name}}</h3>
                                 <div class="aa-price-block">
-                                    <span class="aa-product-view-price">$34.99</span>
+                                    <span class="aa-product-view-price"> ${{pro.price}}</span>
                                     <p class="aa-product-avilability">Avilability: <span>In stock</span></p>
                                 </div>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis animi, veritatis quae repudiandae quod nulla porro quidem, itaque quis quaerat!</p>
                                 <h4>Size</h4>
                                 <div class="aa-prod-view-size">
-                                    <a href="#">S</a>
-                                    <a href="#">M</a>
-                                    <a href="#">L</a>
-                                    <a href="#">XL</a>
+                                    <a v-for="size in pro.size" href="#">{{size.name}}</a>
                                 </div>
                                 <div class="aa-prod-quantity">
                                     <form action="">
@@ -65,9 +64,16 @@
                                             <option value="5">6</option>
                                         </select>
                                     </form>
-                                    <p class="aa-prod-category">
-                                        Category: <a href="#">Polo T-Shirt</a>
+
+                                    <p  class="aa-prod-category">
+
+                                        Category:  <a v-for="abc in pro.category" href="#"> {{abc.name}},</a>
                                     </p>
+
+
+
+
+
                                 </div>
                                 <div class="aa-prod-view-bottom">
                                     <a href="#" class="aa-add-to-cart-btn"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
@@ -82,3 +88,35 @@
     </div>
 </div>
 </template>
+
+<script>
+    import {eventBus} from "../app.js";
+
+    export default {
+
+            data(){
+                return {
+                    pro:{},
+                }
+            },
+
+
+        methods: {
+            getproductphoto(){
+                return "/uploads/product/" + this.pro.image;
+            }
+
+        },
+        created(){
+            eventBus.$on('quick', (product) => {
+                this.pro = product;
+            });
+
+        },
+
+
+
+
+
+    }
+</script>

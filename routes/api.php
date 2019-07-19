@@ -18,3 +18,6 @@ use Illuminate\Http\Request;
 Route::get('/products','ApiProductController@index');
 Route::get('/category','ApiProductController@category');
 Route::get('/category/{id}','ApiProductController@onecategory');
+Route::get('/tag','ApiProductController@tag');
+Route::get('/tag/{id}','ApiProductController@onetag');
+

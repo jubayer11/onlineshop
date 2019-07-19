@@ -1,10 +1,9 @@
 <template>
-    <div>
+
+        <!-- Start men popular category -->
         <div class="tab-pane fade in active" :id="target()">
-            <ul class="aa-product-catg">
+            <ul class="aa-product-catg aa-popular-slider">
                 <!-- start single product item -->
-
-
                 <li v-for="data in data1">
                     <figure>
                         <a class="aa-product-img" href="#"><img :src="getproductphoto(data.image)" alt="polo shirt img"></a>
@@ -17,7 +16,7 @@
                     <div class="aa-product-hvr-content">
                         <a href="#" data-toggle="tooltip" data-placement="top" title="Add to Wishlist"><span class="fa fa-heart-o"></span></a>
                         <a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><span class="fa fa-exchange"></span></a>
-                       <button @click="quickview(data)"> <a  href="#" data-toggle2="tooltip" data-placement="top" title="Quick View" data-toggle="modal" data-target="#quick-view-modal"><span class="fa fa-search"></span></a> </button>
+                        <button @click="quickview(data)"> <a href="#" data-toggle2="tooltip" data-placement="top" title="Quick View" data-toggle="modal" data-target="#quick-view-modal"><span class="fa fa-search"></span></a> </button>
                     </div>
                     <!-- product badge -->
                     <span class="aa-badge aa-sale" href="#">SALE!</span>
@@ -25,20 +24,18 @@
             </ul>
             <a class="aa-browse-btn" href="#">Browse all Product <span class="fa fa-long-arrow-right"></span></a>
         </div>
-    </div>
-
-
+        <!-- / popular product category -->
 
 </template>
 
-<script>
-   import {eventBus} from "../app.js";
 
-   export default {
+<script>
+
+    import {eventBus} from "../../app.js";
+    export default {
         props:['data','data1'],
         data(){
             return {
-
 
                 abc:1,
                 something:{},
@@ -66,6 +63,4 @@
 
 
     }
-
-
 </script>

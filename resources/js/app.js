@@ -10,6 +10,8 @@ require('./bootstrap');
 window.Vue = require('vue');
 import Vue from 'vue'
 
+
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -20,11 +22,14 @@ Vue.component('AppHome',require('./components/AppHome.vue'));
 Vue.component('SecondAppHome',require('./components/secondslide/SecondAppHome.vue'));
 
 import router from './Router/router.js'
+export const eventBus = new Vue();
+export default eventBus;
 const app = new Vue({
     el: '#app',
     router
 
 });
+export const Bus = new Vue();
 const app1 = new Vue({
     el: '#app1',
 
