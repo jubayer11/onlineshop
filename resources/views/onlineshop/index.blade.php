@@ -219,22 +219,23 @@
                             <div class="col-md-4 col-sm-4">
                                 <div class="aa-latest-blog-single">
                                     <figure class="aa-blog-img">
-                                        <a href="#"><img src="{{ URL::to('/') }}/uploads/post/{{$post->image->name ? $post->image->name: 'no carousel photo'}}"alt="img"></a>
+                                        <a href="{{route('dailyshop.blogSingle',$post->id)}}"><img src="{{ URL::to('/') }}/uploads/post/{{$post->image->name ? $post->image->name: 'no carousel photo'}}"alt="img"></a>
                                         <figcaption class="aa-blog-img-caption">
-                                            <span href="#"><i class="fa fa-eye"></i>5K</span>
-                                            <a href="#"><i class="fa fa-thumbs-o-up"></i>426</a>
-                                            <a href="#"><i class="fa fa-comment-o"></i>20</a>
-                                            <span href="#"><i class="fa fa-clock-o"></i>{{$post->created_at->diffForHumans()}}</span>
+                                            <span><i class="fa fa-eye"></i>5K</span>
+                                            <a href="{{route('dailyshop.blogSingle',$post->id)}}"><i class="fa fa-thumbs-o-up"></i>426</a>
+                                            <a href="{{route('dailyshop.blogSingle',$post->id)}}"><i class="fa fa-comment-o"></i>20</a>
+                                            <span><i class="fa fa-clock-o"></i>{{$post->created_at->diffForHumans()}}</span>
                                         </figcaption>
                                     </figure>
                                     <div class="aa-blog-info">
-                                        <h3 class="aa-blog-title"><a href="#">{{$post->title}}</a></h3>
+                                        <h3 class="aa-blog-title"><a href="{{route('dailyshop.blogSingle',$post->id)}}">{{$post->title}}</a></h3>
                                         <p>{{$post->body}}</p>
-                                        <a href="#" class="aa-read-mor-btn">Read more <span class="fa fa-long-arrow-right"></span></a>
+                                        <a href="{{route('dailyshop.blogSingle',$post->id)}}" class="aa-read-mor-btn">Read more <span class="fa fa-long-arrow-right"></span></a>
                                     </div>
                                 </div>
                             </div>
                             @endforeach
+                           <a class="aa-browse-btn" href="{{route('dailyshop.blogArchive')}}">Browse all Blog <span class="fa fa-long-arrow-right"></span></a>
 
                         </div>
                     </div>

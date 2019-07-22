@@ -28,47 +28,30 @@
                                 <!-- Blog details -->
                                 <div class="aa-blog-content aa-blog-details">
                                     <article class="aa-blog-content-single">
-                                        <h2><a href="#">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem, praesentium?</a></h2>
+                                        <h2><a href="#">{{$post->title}}</a></h2>
                                         <div class="aa-article-bottom">
                                             <div class="aa-post-author">
-                                                Posted By <a href="#">Jackson</a>
+                                                Posted By <a href="#">{{$post->admin->name}}</a>
                                             </div>
                                             <div class="aa-post-date">
-                                                March 26th 2016
+                                                {{$post->created_at->diffForHumans()}}
                                             </div>
                                         </div>
                                         <figure class="aa-blog-img">
-                                            <a href="#"><img src="{{asset('front/img/fashion/3.jpg')}}" alt="fashion img"></a>
+                                            <a href="#"><img src="{{ URL::to('/') }}/uploads/post/{{$post->image->name ? $post->image->name: 'no post photo'}}" alt="fashion img"></a>
                                         </figure>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates voluptatum accusamus dolorum ipsam adipisci laudantium laborum ipsa excepturi soluta, dolore similique, velit id, rerum repudiandae enim modi! Quo, debitis, in.</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo, laudantium error nisi, fuga odio sint dignissimos similique maiores nihil amet, impedit atque saepe distinctio, in repudiandae quia. Hic numquam laborum, aliquam eligendi quo inventore aperiam quae error commodi voluptatum dolorum tempore, atque, ratione molestiae, nostrum perferendis. Similique voluptatum error quaerat?</p>
-                                        <blockquote>
-                                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum facere tempora rerum qui illum, repellat adipisci ad suscipit, quis accusamus commodi nemo deserunt optio nobis fugit cumque, delectus repellendus quo.
-                                        </blockquote>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor omnis ipsam, nisi voluptate reprehenderit consectetur, illum possimus asperiores. Sed ad natus saepe, distinctio veniam? Error natus, dolore rem beatae, dolorum, aliquid sapiente ipsa voluptatum impedit vel maiores nobis totam! Ad dicta obcaecati dolore natus deleniti qui, hic animi, nobis cumque fuga non sapiente neque voluptatum nisi perspiciatis, molestiae vero distinctio officia, laboriosam. Veritatis assumenda nam est fuga rem asperiores repellat veniam magnam, molestias iusto quas facilis, et eaque. Est magni voluptas quibusdam saepe quis laudantium atque maxime itaque optio ipsam qui voluptates beatae, perspiciatis fugiat tempora maiores, odio, sed non!</p>
-                                        <ul>
-                                            <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum deserunt earum qui nobis veritatis! Reprehenderit.</li>
-                                            <li>Rerum nesciunt laboriosam, excepturi, officiis, delectus cum facere aperiam aliquam numquam, modi amet asperiores repudiandae!</li>
-                                            <li>Dicta recusandae eveniet ducimus rerum, maxime provident suscipit cupiditate natus at necessitatibus, consequuntur iste magnam.</li>
-                                            <li>Voluptate sunt tempora culpa et veritatis ex quo non tenetur similique blanditiis! Debitis, assumenda, provident.</li>
-                                            <li>Eligendi sunt ratione praesentium, tempore esse, iure ut dolor consequuntur eum ducimus commodi sequi beatae.</li>
-                                        </ul>
-                                        <h1>Heading 1</h1>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias nihil nobis libero magni fuga ratione ipsam ipsa laboriosam quod, reprehenderit, error iusto, delectus eius. Iste.</p>
-                                        <h2>Heading 2</h2>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias nihil nobis libero magni fuga ratione ipsam ipsa laboriosam quod, reprehenderit, error iusto, delectus eius. Iste.</p>
-                                        <h3>Heading 3</h3>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est asperiores voluptatem officia, nulla, nihil tempore illum esse sunt in quos!</p>
-                                        <h4>Heading 4</h4>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus odit nostrum magnam, quas quos id!</p>
+                                       <p> {{$post->body}}
+
+                                       </p>
                                         <div class="blog-single-bottom">
                                             <div class="row">
                                                 <div class="col-md-8 col-sm-6 col-xs-12">
                                                     <div class="blog-single-tag">
                                                         <span>Tags:</span>
-                                                        <a href="#">Fashion,</a>
-                                                        <a href="#">Beauty,</a>
-                                                        <a href="#">Lifestyle</a>
+                                                        @foreach($post->tags as $tag)
+                                                        <a href="#">{{$tag->name}}</a>
+                                                            @endforeach
+
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4 col-sm-6 col-xs-12">
@@ -93,82 +76,8 @@
 
                                     <!--custom comment -->
 
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="checkout-area">
-                                                <form action="">
-                                                    <div class="row">
-                                                        <div class="col-md-8">
-                                                            <div class="checkout-left">
-                                                                <div class="panel-group" id="accordion">
 
 
-                                                                    <!-- Login section -->
-                                                                    <div class="panel panel-default aa-checkout-login">
-                                                                        <div class="panel-heading">
-                                                                            <h4 class="panel-title">
-                                                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-                                                                                    Client Login
-                                                                                </a>
-                                                                            </h4>
-                                                                        </div>
-                                                                        <div id="collapseTwo" class="panel-collapse collapse">
-                                                                            <div class="panel-body">
-                                                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat voluptatibus modi pariatur qui reprehenderit asperiores fugiat deleniti praesentium enim incidunt.</p>
-                                                                                <input type="text" placeholder="Username or email">
-                                                                                <input type="password" placeholder="Password">
-                                                                                <button type="submit" class="aa-browse-btn">Login</button>
-                                                                                <label for="rememberme"><input type="checkbox" id="rememberme"> Remember me </label>
-                                                                                <p class="aa-lost-password"><a href="#">Lost your password?</a></p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="checkout-area">
-                                                <form action="">
-                                                    <div class="row">
-                                                        <div class="col-md-8">
-                                                            <div class="checkout-left">
-                                                                <div class="panel-group" id="accordion">
-
-
-                                                                    <!-- Login section -->
-                                                                    <div class="panel panel-default aa-checkout-login">
-                                                                        <div class="panel-heading">
-                                                                            <h4 class="panel-title">
-                                                                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-                                                                                    Client Login
-                                                                                </a>
-                                                                            </h4>
-                                                                        </div>
-                                                                        <div id="collapseTwo" class="panel-collapse collapse">
-                                                                            <div class="panel-body">
-                                                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat voluptatibus modi pariatur qui reprehenderit asperiores fugiat deleniti praesentium enim incidunt.</p>
-                                                                                <input type="text" placeholder="Username or email">
-                                                                                <input type="password" placeholder="Password">
-                                                                                <button type="submit" class="aa-browse-btn">Login</button>
-                                                                                <label for="rememberme"><input type="checkbox" id="rememberme"> Remember me </label>
-                                                                                <p class="aa-lost-password"><a href="#">Lost your password?</a></p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
 
                                     <!-- Blog Comment threats -->
                                     <div class="aa-blog-comment-threat">
@@ -272,34 +181,47 @@
 
                                     <!-- blog comments form -->
                                     <div id="respond">
-                                        <h3 class="reply-title">Leave a Comment</h3>
-                                        <form id="commentform">
-                                            <p class="comment-notes">
-                                                Your email address will not be published. Required fields are marked <span class="required">*</span>
-                                            </p>
-                                            <p class="comment-form-author">
-                                                <label for="author">Name <span class="required">*</span></label>
-                                                <input type="text" name="author" value="" size="30" required="required">
-                                            </p>
-                                            <p class="comment-form-email">
-                                                <label for="email">Email <span class="required">*</span></label>
-                                                <input type="email" name="email" value="" aria-required="true" required="required">
-                                            </p>
-                                            <p class="comment-form-url">
-                                                <label for="url">Website</label>
-                                                <input type="url" name="url" value="">
-                                            </p>
-                                            <p class="comment-form-comment">
-                                                <label for="comment">Comment</label>
-                                                <textarea name="comment" cols="45" rows="8" aria-required="true" required="required"></textarea>
-                                            </p>
-                                            <p class="form-allowed-tags">
-                                                You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes:  <code>&lt;a href="" title=""&gt; &lt;abbr title=""&gt; &lt;acronym title=""&gt; &lt;b&gt; &lt;blockquote cite=""&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=""&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=""&gt; &lt;s&gt; &lt;strike&gt; &lt;strong&gt; </code>
-                                            </p>
-                                            <p class="form-submit">
-                                                <input type="submit" name="submit" class="aa-browse-btn" value="Post Comment">
-                                            </p>
-                                        </form>
+
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="checkout-area">
+                                                    <form action="">
+                                                        <div class="row">
+                                                            <div class="col-md-8">
+                                                                <div class="checkout-left">
+                                                                    <div class="panel-group" id="accordion">
+                                                                        <!-- Login section -->
+                                                                        <div class="panel panel-default aa-checkout-login">
+                                                                            <div class="panel-heading">
+                                                                                <h4 class="panel-title">
+                                                                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                                                                                        Login to leave a comment
+                                                                                    </a>
+                                                                                </h4>
+                                                                            </div>
+                                                                            <div id="collapseTwo" class="panel-collapse collapse">
+                                                                                <div class="panel-body">
+                                                                                    <p>UserName:</p>
+                                                                                    <input type="text" placeholder="Username or email">
+                                                                                    <p>Password:</p>
+                                                                                    <input type="password" placeholder="Password">
+                                                                                    <br>
+                                                                                    <br>
+                                                                                    <button type="submit" class="aa-browse-btn">Login</button>
+                                                                                    <button href="#" class="aa-browse-btn">Signup</button>
+                                                                                    <label for="rememberme"><input type="checkbox" id="rememberme"> Remember me </label>
+                                                                                    <p class="aa-lost-password"><a href="#">Lost your password?</a></p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

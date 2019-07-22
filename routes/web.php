@@ -159,7 +159,7 @@ Route::get('dailyshop/index','VisitOnlineshopController@index')->name('dailyshop
 Route::get('dailyshop/nopage','VisitOnlineshopController@nopage')->name('dailyshop.nopage');
 Route::get('dailyshop/account','VisitOnlineshopController@account')->name('dailyshop.account');
 Route::get('dailyshop/blog-archive-2','VisitOnlineshopController@blogArchive')->name('dailyshop.blogArchive');
-Route::get('dailyshop/blog-single','VisitOnlineshopController@blogSingle')->name('dailyshop.blogSingle');
+Route::get('dailyshop/blog-single/{id}','VisitOnlineshopController@blogSingle')->name('dailyshop.blogSingle');
 Route::get('dailyshop/cart','VisitOnlineshopController@cart')->name('dailyshop.cart');
 Route::get('dailyshop/checkout','VisitOnlineshopController@checkout')->name('dailyshop.checkout');
 Route::get('dailyshop/contact','VisitOnlineshopController@contact')->name('dailyshop.contact');

@@ -20,4 +20,9 @@ Route::get('/category','ApiProductController@category');
 Route::get('/category/{id}','ApiProductController@onecategory');
 Route::get('/tag','ApiProductController@tag');
 Route::get('/tag/{id}','ApiProductController@onetag');
+Route::Post('/like/{post}','LikeController@likeIt');
+Route::delete('/like/{post}','LikeController@unlikeIt');
+
+
+Route::apiResource('/post/{id}/comment','CommentController');
 

@@ -28,171 +28,33 @@
                             <div class="col-md-9">
                                 <div class="aa-blog-content">
                                     <div class="row">
+                                        @foreach($posts as $post)
                                         <div class="col-md-4 col-sm-4">
                                             <article class="aa-latest-blog-single">
                                                 <figure class="aa-blog-img">
-                                                    <a href="#"><img alt="img" src="{{asset('front/img/promo-banner-1.jpg')}}"></a>
+                                                    <a href="{{route('dailyshop.blogSingle',$post->id)}}"><img alt="img" src="{{ URL::to('/') }}/uploads/post/{{$post->image->name ? $post->image->name: 'no post photo'}}"></a>
                                                     <figcaption class="aa-blog-img-caption">
                                                         <span href="#"><i class="fa fa-eye"></i>5K</span>
                                                         <a href="#"><i class="fa fa-thumbs-o-up"></i>426</a>
                                                         <a href="#"><i class="fa fa-comment-o"></i>20</a>
-                                                        <span href="#"><i class="fa fa-clock-o"></i>June 26, 2016</span>
+                                                        <span href="#"><i class="fa fa-clock-o"></i>{{$post->created_at->diffForHumans()}}</span>
                                                     </figcaption>
                                                 </figure>
                                                 <div class="aa-blog-info">
-                                                    <h3 class="aa-blog-title"><a href="#">Lorem ipsum dolor sit amet</a></h3>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, ad? Autem quos natus nisi aperiam, beatae, fugiat odit vel impedit dicta enim repellendus animi. Expedita quas reprehenderit incidunt, voluptates corporis.</p>
-                                                    <a class="aa-read-mor-btn" href="#">Read more <span class="fa fa-long-arrow-right"></span></a>
+                                                    <h3 class="aa-blog-title"><a href="{{route('dailyshop.blogSingle',$post->id)}}">{{$post->title}}</a></h3>
+                                                    <p>{{ str_limit($post->body, $limit = 100, $end = '...') }}</p>
+                                                    <a class="aa-read-mor-btn" href="#">Read moreaaaaaa <span class="fa fa-long-arrow-right"></span></a>
                                                 </div>
                                             </article>
                                         </div>
-                                        <div class="col-md-4 col-sm-4">
-                                            <article class="aa-latest-blog-single">
-                                                <figure class="aa-blog-img">
-                                                    <a href="#"><img alt="img" src="{{asset('front/img/promo-banner-2.jpg')}}"></a>
-                                                    <figcaption class="aa-blog-img-caption">
-                                                        <span href="#"><i class="fa fa-eye"></i>5K</span>
-                                                        <a href="#"><i class="fa fa-thumbs-o-up"></i>426</a>
-                                                        <a href="#"><i class="fa fa-comment-o"></i>20</a>
-                                                        <span href="#"><i class="fa fa-clock-o"></i>June 26, 2016</span>
-                                                    </figcaption>
-                                                </figure>
-                                                <div class="aa-blog-info">
-                                                    <h3 class="aa-blog-title"><a href="#">Lorem ipsum dolor sit amet</a></h3>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, ad? Autem quos natus nisi aperiam, beatae, fugiat odit vel impedit dicta enim repellendus animi. Expedita quas reprehenderit incidunt, voluptates corporis.</p>
-                                                    <a class="aa-read-mor-btn" href="#">Read more <span class="fa fa-long-arrow-right"></span></a>
-                                                </div>
-                                            </article>
-                                        </div>
-                                        <div class="col-md-4 col-sm-4">
-                                            <article class="aa-latest-blog-single">
-                                                <figure class="aa-blog-img">
-                                                    <a href="#"><img alt="img" src="{{asset('front/img/promo-banner-3.jpg')}}"></a>
-                                                    <figcaption class="aa-blog-img-caption">
-                                                        <span href="#"><i class="fa fa-eye"></i>5K</span>
-                                                        <a href="#"><i class="fa fa-thumbs-o-up"></i>426</a>
-                                                        <a href="#"><i class="fa fa-comment-o"></i>20</a>
-                                                        <span href="#"><i class="fa fa-clock-o"></i>June 26, 2016</span>
-                                                    </figcaption>
-                                                </figure>
-                                                <div class="aa-blog-info">
-                                                    <h3 class="aa-blog-title"><a href="#">Lorem ipsum dolor sit amet</a></h3>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, ad? Autem quos natus nisi aperiam, beatae, fugiat odit vel impedit dicta enim repellendus animi. Expedita quas reprehenderit incidunt, voluptates corporis.</p>
-                                                    <a class="aa-read-mor-btn" href="#">Read more <span class="fa fa-long-arrow-right"></span></a>
-                                                </div>
-                                            </article>
-                                        </div>
-                                        <div class="col-md-4 col-sm-4">
-                                            <article class="aa-latest-blog-single">
-                                                <figure class="aa-blog-img">
-                                                    <a href="#"><img alt="img" src="{{asset('front/img/promo-banner-4.jpg')}}"></a>
-                                                    <figcaption class="aa-blog-img-caption">
-                                                        <span href="#"><i class="fa fa-eye"></i>5K</span>
-                                                        <a href="#"><i class="fa fa-thumbs-o-up"></i>426</a>
-                                                        <a href="#"><i class="fa fa-comment-o"></i>20</a>
-                                                        <span href="#"><i class="fa fa-clock-o"></i>June 26, 2016</span>
-                                                    </figcaption>
-                                                </figure>
-                                                <div class="aa-blog-info">
-                                                    <h3 class="aa-blog-title"><a href="#">Lorem ipsum dolor sit amet</a></h3>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, ad? Autem quos natus nisi aperiam, beatae, fugiat odit vel impedit dicta enim repellendus animi. Expedita quas reprehenderit incidunt, voluptates corporis.</p>
-                                                    <a class="aa-read-mor-btn" href="#">Read more <span class="fa fa-long-arrow-right"></span></a>
-                                                </div>
-                                            </article>
-                                        </div>
-                                        <div class="col-md-4 col-sm-4">
-                                            <article class="aa-latest-blog-single">
-                                                <figure class="aa-blog-img">
-                                                    <a href="#"><img alt="img" src="{{asset('front/img/promo-banner-5.jpg')}}"></a>
-                                                    <figcaption class="aa-blog-img-caption">
-                                                        <span href="#"><i class="fa fa-eye"></i>5K</span>
-                                                        <a href="#"><i class="fa fa-thumbs-o-up"></i>426</a>
-                                                        <a href="#"><i class="fa fa-comment-o"></i>20</a>
-                                                        <span href="#"><i class="fa fa-clock-o"></i>June 26, 2016</span>
-                                                    </figcaption>
-                                                </figure>
-                                                <div class="aa-blog-info">
-                                                    <h3 class="aa-blog-title"><a href="#">Lorem ipsum dolor sit amet</a></h3>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, ad? Autem quos natus nisi aperiam, beatae, fugiat odit vel impedit dicta enim repellendus animi. Expedita quas reprehenderit incidunt, voluptates corporis.</p>
-                                                    <a class="aa-read-mor-btn" href="#">Read more <span class="fa fa-long-arrow-right"></span></a>
-                                                </div>
-                                            </article>
-                                        </div>
-                                        <div class="col-md-4 col-sm-4">
-                                            <article class="aa-latest-blog-single">
-                                                <figure class="aa-blog-img">
-                                                    <a href="#"><img alt="img" src="{{asset('front/img/promo-banner-1.jpg')}}"></a>
-                                                    <figcaption class="aa-blog-img-caption">
-                                                        <span href="#"><i class="fa fa-eye"></i>5K</span>
-                                                        <a href="#"><i class="fa fa-thumbs-o-up"></i>426</a>
-                                                        <a href="#"><i class="fa fa-comment-o"></i>20</a>
-                                                        <span href="#"><i class="fa fa-clock-o"></i>June 26, 2016</span>
-                                                    </figcaption>
-                                                </figure>
-                                                <div class="aa-blog-info">
-                                                    <h3 class="aa-blog-title"><a href="#">Lorem ipsum dolor sit amet</a></h3>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, ad? Autem quos natus nisi aperiam, beatae, fugiat odit vel impedit dicta enim repellendus animi. Expedita quas reprehenderit incidunt, voluptates corporis.</p>
-                                                    <a class="aa-read-mor-btn" href="#">Read more <span class="fa fa-long-arrow-right"></span></a>
-                                                </div>
-                                            </article>
-                                        </div>
-                                        <div class="col-md-4 col-sm-4">
-                                            <article class="aa-latest-blog-single">
-                                                <figure class="aa-blog-img">
-                                                    <a href="#"><img alt="img" src="{{asset('front/img/promo-banner-2.jpg')}}"></a>
-                                                    <figcaption class="aa-blog-img-caption">
-                                                        <span href="#"><i class="fa fa-eye"></i>5K</span>
-                                                        <a href="#"><i class="fa fa-thumbs-o-up"></i>426</a>
-                                                        <a href="#"><i class="fa fa-comment-o"></i>20</a>
-                                                        <span href="#"><i class="fa fa-clock-o"></i>June 26, 2016</span>
-                                                    </figcaption>
-                                                </figure>
-                                                <div class="aa-blog-info">
-                                                    <h3 class="aa-blog-title"><a href="#">Lorem ipsum dolor sit amet</a></h3>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, ad? Autem quos natus nisi aperiam, beatae, fugiat odit vel impedit dicta enim repellendus animi. Expedita quas reprehenderit incidunt, voluptates corporis.</p>
-                                                    <a class="aa-read-mor-btn" href="#">Read more <span class="fa fa-long-arrow-right"></span></a>
-                                                </div>
-                                            </article>
-                                        </div>
-                                        <div class="col-md-4 col-sm-4">
-                                            <article class="aa-latest-blog-single">
-                                                <figure class="aa-blog-img">
-                                                    <a href="#"><img alt="img" src="{{asset('front/img/promo-banner-3.jpg')}}"></a>
-                                                    <figcaption class="aa-blog-img-caption">
-                                                        <span href="#"><i class="fa fa-eye"></i>5K</span>
-                                                        <a href="#"><i class="fa fa-thumbs-o-up"></i>426</a>
-                                                        <a href="#"><i class="fa fa-comment-o"></i>20</a>
-                                                        <span href="#"><i class="fa fa-clock-o"></i>June 26, 2016</span>
-                                                    </figcaption>
-                                                </figure>
-                                                <div class="aa-blog-info">
-                                                    <h3 class="aa-blog-title"><a href="#">Lorem ipsum dolor sit amet</a></h3>
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, ad? Autem quos natus nisi aperiam, beatae, fugiat odit vel impedit dicta enim repellendus animi. Expedita quas reprehenderit incidunt, voluptates corporis.</p>
-                                                    <a class="aa-read-mor-btn" href="#">Read more <span class="fa fa-long-arrow-right"></span></a>
-                                                </div>
-                                            </article>
-                                        </div>
+                                            @endforeach
                                     </div>
                                 </div>
                                 <!-- Blog Pagination -->
                                 <div class="aa-blog-archive-pagination">
                                     <nav>
-                                        <ul class="pagination">
-                                            <li>
-                                                <a aria-label="Previous" href="#">
-                                                    <span aria-hidden="true">«</span>
-                                                </a>
-                                            </li>
-                                            <li class="active"><a href="#">1</a></li>
-                                            <li><a href="#">2</a></li>
-                                            <li><a href="#">3</a></li>
-                                            <li><a href="#">4</a></li>
-                                            <li><a href="#">5</a></li>
-                                            <li>
-                                                <a aria-label="Next" href="#">
-                                                    <span aria-hidden="true">»</span>
-                                                </a>
-                                            </li>
+                                        <ul class="pagination" style="text-align: center;display: inline-block;">
+                                            <li style="color: #fffafa;">{{$posts->links()}}</li>
                                         </ul>
                                     </nav>
                                 </div>
@@ -201,51 +63,39 @@
                                 <aside class="aa-blog-sidebar">
                                     <div class="aa-sidebar-widget">
                                         <h3>Category</h3>
+
                                         <ul class="aa-catg-nav">
-                                            <li><a href="#">Men</a></li>
-                                            <li><a href="">Women</a></li>
-                                            <li><a href="">Kids</a></li>
-                                            <li><a href="">Electornics</a></li>
-                                            <li><a href="">Sports</a></li>
+                                            @foreach($categories as $category)
+                                            <li><a href="#">{{$category->name}}</a></li>
+                                            @endforeach()
+
                                         </ul>
+
                                     </div>
                                     <div class="aa-sidebar-widget">
                                         <h3>Tags</h3>
+
                                         <div class="tag-cloud">
-                                            <a href="#">Fashion</a>
-                                            <a href="#">Ecommerce</a>
-                                            <a href="#">Shop</a>
-                                            <a href="#">Hand Bag</a>
-                                            <a href="#">Laptop</a>
-                                            <a href="#">Head Phone</a>
-                                            <a href="#">Pen Drive</a>
+                                            @foreach($tags as $tag)
+                                            <a href="#">{{$tag->name}}</a>
+                                            @endforeach
                                         </div>
+
                                     </div>
                                     <div class="aa-sidebar-widget">
                                         <h3>Recent Post</h3>
                                         <div class="aa-recently-views">
                                             <ul>
+                                                @foreach($reposts as $repost)
                                                 <li>
-                                                    <a class="aa-cartbox-img" href="#"><img src="{{asset('front/img/woman-small-2.jpg')}}" alt="img"></a>
+                                                    <a class="aa-cartbox-img" href="#"><img src="{{ URL::to('/') }}/uploads/post/{{$repost->image->name ? $repost->image->name: 'no carousel photo'}}" alt="img"></a>
                                                     <div class="aa-cartbox-info">
-                                                        <h4><a href="#">Lorem ipsum dolor sit amet.</a></h4>
-                                                        <p>March 26th 2016</p>
+                                                        <h4><a href="#">{{$repost->title}}</a></h4>
+                                                        <p>{{$repost->created_at->diffForHumans()}}</p>
                                                     </div>
                                                 </li>
-                                                <li>
-                                                    <a class="aa-cartbox-img" href="#"><img src="{{asset('front/img/woman-small-1.jpg')}}" alt="img"></a>
-                                                    <div class="aa-cartbox-info">
-                                                        <h4><a href="#">Lorem ipsum dolor.</a></h4>
-                                                        <p>March 26th 2016</p>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <a class="aa-cartbox-img" href="#"><img src="{{asset('front/img/woman-small-2.jpg')}}" alt="img"></a>
-                                                    <div class="aa-cartbox-info">
-                                                        <h4><a href="#">Lorem ipsum dolor.</a></h4>
-                                                        <p>March 26th 2016</p>
-                                                    </div>
-                                                </li>
+                                                    @endforeach
+
                                             </ul>
                                         </div>
                                     </div>

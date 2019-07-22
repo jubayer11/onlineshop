@@ -302,7 +302,7 @@
                             <ul class="dropdown-menu">
                                 <li><a href="{{route('dailyshop.blogArchive')}}">Blog Style</a></li>
 
-                                <li><a href="{{route('dailyshop.blogSingle')}}">Blog Single</a></li>
+{{--                                <li><a href="{{route('dailyshop.blogSingle')}}">Blog Single</a></li>--}}
                             </ul>
                         </li>
                         <li><a href="{{route('dailyshop.contact')}}">Contact</a></li>

@@ -7,6 +7,7 @@ use App\Category;
 use App\Post;
 use App\Product;
 use App\SecondCarousel;
+use App\Tag;
 use Illuminate\Http\Request;
 
 class VisitOnlineshopController extends Controller
@@ -43,11 +44,19 @@ class VisitOnlineshopController extends Controller
     }
     public function  blogArchive()
     {
-        return view('onlineshop.blog-archive-2');
+        $tags=Tag::all()->take(5);
+        $categories=Category::all()->take(5);
+        $posts=Post::inRandomOrder()->paginate(3);
+        $reposts=Post::latest()->take(3)->get();
+
+
+
+      return view('onlineshop.blog-archive-2',compact('tags','categories','posts','reposts'));
     }
-    public function  blogSingle()
+    public function  blogSingle($id)
     {
-        return view('onlineshop.blog-single');
+        $post=Post::findOrFail($id);
+        return view('onlineshop.blog-single',compact('post'));
     }
     public function  cart()
     {

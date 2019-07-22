@@ -18,5 +18,13 @@ class DatabaseSeeder extends Seeder
         $this->call(ProductTagSeeder::class);
         $this->call(ProductSeeder::class);
         $this->call(ProductSizeSeeder::class);
+
+        factory(\App\User::class,10)->create();
+        factory(\App\Tag::class,5)->create();
+        factory(\App\Post::class,10)->create()->each(function ($post){
+            return $post->like()->save(factory(\App\Like::class)->make());
+        });
+        factory(\App\Comment::class,50)->create();
+
     }
 }
