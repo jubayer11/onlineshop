@@ -151,6 +151,7 @@ return [
          * Package Service Providers...
          */
         Gloudemans\Shoppingcart\ShoppingcartServiceProvider::class,
+        Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
 
         /*
          * Application Service Providers...

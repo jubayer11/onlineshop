@@ -64,5 +64,6 @@ class Kernel extends HttpKernel
         'Admin'=> \App\Http\Middleware\AdminMiddleware::class,
         'SAdmin'=>\App\Http\Middleware\Admin::class,
         'SEditor'=>\App\Http\Middleware\EditorMiddleware::class,
+        'jwt'=>\App\Http\Middleware\jwt::class,
     ];
 }

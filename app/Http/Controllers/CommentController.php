@@ -15,6 +15,16 @@ class CommentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    /**
+     * Create a new AuthController instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('jwt', ['except' => ['index','show']]);
+    }
+
     public function index(Post $id)
     {
 
